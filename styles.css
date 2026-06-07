@@ -163,10 +163,10 @@ svg {
 
 
 .brand-logo {
-  height: 56px;
+  height: 70px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(98, 255, 183, 0.3));
+  filter: drop-shadow(0 0 10px rgba(98, 255, 183, 0.35));
   padding: 0;
   border: none;
   background: none;
