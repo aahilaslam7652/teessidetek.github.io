@@ -274,22 +274,26 @@ svg {
   margin: 0 auto;
 }
 
+
 .hero-stats {
   position: absolute;
   left: 50%;
-  bottom: 140px;
+  bottom: 130px;
   transform: translateX(-50%);
 
   display: flex;
-  gap: 30px;
+  gap: 40px; /* ✅ more breathing room */
 
-  padding: 12px 18px;
-  border: 1px solid rgba(64, 233, 255, 0.15);
-  border-radius: 12px;
+  padding: 14px 24px;
+  border-radius: 14px;
 
-  background: rgba(7, 16, 15, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(7, 16, 15, 0.75);
+  border: 1px solid rgba(98, 255, 183, 0.25);
+
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(98, 255, 183, 0.12);
 }
+
 
 .stat {
   text-align: center;
@@ -297,14 +301,17 @@ svg {
 
 .stat strong {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.4rem;   /* ✅ bigger for impact */
   font-weight: 900;
   color: #62ffb7;
 }
 
 .stat span {
-  font-size: 0.8rem;
+  display: block;
+  margin-top: 2px;
+  font-size: 0.75rem;
   color: #a7bbb4;
+  letter-spacing: 0.5px;
 }
 
 
