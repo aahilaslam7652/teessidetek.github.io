@@ -1318,3 +1318,10 @@ h1 {
     transition-duration: 0.001ms !important;
   }
 }
+/* Sets a precise, uniform size for your gallery images */
+.console-photo-grid img {
+    width: 100%;        /* Makes the image fill the column width perfectly */
+    height: 240px;      /* FORCES all three images to have the exact same height */
+    object-fit: cover;  /* CRITICAL: Crops the images cleanly so they don't stretch or warp */
+    display: block;     /* Removes weird default gaps underneath images */
+}
