@@ -1,0 +1,9 @@
+:root {
+  --bg: #07100f;
+  --green: #62ffb7;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
