@@ -267,8 +267,16 @@ svg {
   position: absolute;
   right: 5%;
   bottom: 80px;
-  width: 380px;
+  width: 420px;
   
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
   filter: 
     drop-shadow(0 0 25px rgba(98,255,183,0.3))
     hue-rotate(-20deg) saturate(1.1);
