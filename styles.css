@@ -245,7 +245,7 @@ svg {
   display: grid;
   align-items: center;
   overflow: hidden;
-  padding: 5.2rem 1rem 5rem;
+  padding: 4.2rem 1rem 5rem;
   isolation: isolate;
 }
 
