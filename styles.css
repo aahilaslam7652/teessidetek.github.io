@@ -264,11 +264,12 @@ svg {
 
 
 .hero-pc {
-  z-index: 3; /* ✅ always above xbox *
+  z-index: 3;
+
   position: absolute;
-  right: 5%;
-  bottom: 80px;
-  width: 420px;
+  right: 0;
+  bottom: 0;
+
 
   pointer-events: none;
 
@@ -1356,10 +1357,11 @@ h1 {
     width: 100%;
   }
 .hero-xbox {
-  position: absolute;
 
-  right: 16%;     /* ✅ move slightly right */
-  bottom: 260px;  /* ✅ bring it LOWER (closer to PC) */
+  position: absolute;
+  right: 60px;
+  top: 40px;
+
 
   width: 160px;
 
