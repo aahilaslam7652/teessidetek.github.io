@@ -1318,10 +1318,44 @@ h1 {
     transition-duration: 0.001ms !important;
   }
 }
-/* Sets a precise, uniform size for your gallery images */
-.console-photo-grid img {
-    width: 100%;        /* Makes the image fill the column width perfectly */
-    height: 240px;      /* FORCES all three images to have the exact same height */
-    object-fit: cover;  /* CRITICAL: Crops the images cleanly so they don't stretch or warp */
-    display: block;     /* Removes weird default gaps underneath images */
+/* --- COMPLETE GALLERY FIX --- */
+
+/* 1. Forces the columns to sit in a clean row across the screen */
+.console-photo-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
 }
+
+/* 2. Sets up each individual card layout container */
+.console-photo-card {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+/* 3. FORCES the image container to maintain a neat size layout box */
+.console-photo-media {
+    width: 100% !important;
+    height: 240px !important; /* Sets the uniform image height */
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    margin-bottom: 12px !important;
+    position: relative !important;
+}
+
+/* 4. Fixes the raw image files so they fit the box perfectly and don't expand abnormally */
+.console-photo-media img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Crops images cleanly without distortion */
+    display: block !important;
+}
+
+
