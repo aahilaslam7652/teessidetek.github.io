@@ -267,11 +267,11 @@ svg {
   z-index: 3;
 
   position: absolute;
-  right: 0;
+  right: 8%;
   bottom: 0;
 
   width: 100%;       /* ✅ scales inside container */
-  max-width: 420px;  /* ✅ caps size */
+  max-width: 460px;  /* ✅ caps size */
 
   height: auto;
 
@@ -1342,14 +1342,16 @@ h1 {
     width: 100%;
   }
 .hero-xbox {
+  position: absolute;
 
-  
+  right: 18%;   /* ✅ sits between text and PC */
+  bottom: 180px; /* ✅ ABOVE the PC */
 
-  
+  width: 140px;
 
   transform: rotate(-12deg);
 
-  opacity: 0.9;
+  opacity: 0.85;
 
   filter:
     brightness(0.9)
@@ -1358,17 +1360,7 @@ h1 {
     drop-shadow(0 0 50px rgba(64,233,255,0.15));
 
   animation: floatXbox 6s ease-in-out infinite;
-transform: rotate(-12deg) translateX(10px);
-
-  position: absolute;
-  top: 20px;
-  right: 40px;
-
-  width: 120px;    /* ✅ REQUIRED */
-  height: auto;
-
   z-index: 2;
-
 }
 
   .hero-meta span,
