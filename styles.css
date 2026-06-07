@@ -262,6 +262,16 @@ svg {
   background: #050908;
 }
 
+
+.hero-pc {
+  position: absolute;
+  right: 5%;
+  bottom: 80px;
+  width: 380px;
+
+  pointer-events: none;
+}
+
 .hero-overlay {
   z-index: -2;
   background:
