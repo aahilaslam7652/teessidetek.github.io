@@ -47,10 +47,25 @@
 }
 
 .hero-overlay {
+  position: absolute;
+  inset: 0;
+
   z-index: -2;
+
   background:
-    linear-gradient(90deg, rgba(5,8,7,0.92), rgba(5,8,7,0.55) 45%, rgba(5,8,7,0.88)),
-    linear-gradient(0deg, #07100f 0%, rgba(7,16,15,0.18) 30%, rgba(7,16,15,0.08) 70%, #07100f 100%);
+    linear-gradient(
+      90deg,
+      rgba(5,8,7,0.55),   /* ✅ LIGHTER → allows background */
+      rgba(5,8,7,0.35) 45%,
+      rgba(5,8,7,0.75)
+    ),
+    linear-gradient(
+      0deg,
+      #07100f 0%,
+      rgba(7,16,15,0.15) 30%,
+      rgba(7,16,15,0.08) 70%,
+      #07100f 100%
+    );
 }
 
 
