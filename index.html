@@ -6,8 +6,7 @@
 
 <title>Computer & Laptop Repairs, Apple & Gaming PCs in Teesside | TeessideTek</title>
 
-<meta name="description" content="Computer repairs and custom gaming PC builds in Middlesbrough. Also phone, laptop & console repairs with fast diagnostics and honest pricing. TeessideTek, 592 Acklam Road. Call 07859897698." />
-
+<meta name="description" content="Computer repairs, gaming PC builds, and tech support in Middlesbrough. Fast diagnostics and honest pricing." />
 <meta name="theme-color" content="#07100f" />
 
 <link rel="stylesheet" href="css/base.css">
@@ -16,46 +15,16 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/responsive.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ElectronicsStore",
-  "name": "TeessideTek",
-  "description": "Tech repair company in Middlesbrough for phones, laptops, consoles and everyday devices.",
-  "telephone": "+447859897698",
-  "email": "teessidetek@gmail.com",
-  "priceRange": "££",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "00:00",
-    "closes": "23:59"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "592 Acklam Road",
-    "addressLocality": "Middlesbrough",
-    "postalCode": "TS5 8BQ",
-    "addressCountry": "GB"
-  },
-  "areaServed": "Middlesbrough"
-}
-</script>
 </head>
 
 <body>
 
+<!-- ✅ GLOBAL BACKGROUND CANVAS -->
+<canvas id="tech-canvas" class="global-canvas"></canvas>
+
 <header class="site-header">
   <a class="brand" href="#top">
-    <img src="assets/logo_icon.png" alt="TeessideTek logo" class="brand-logo" />
+    <img src="assets/logo_icon.png" class="brand-logo" alt="TeessideTek logo">
     <span>
       <strong>TeessideTek</strong>
       <small>Teesside Repairs</small>
@@ -78,45 +47,29 @@
 <!-- ✅ HERO -->
 <section class="hero" id="top">
 
-  <!-- ✅ IMPORTANT: Canvas MUST be inside hero -->
-  <canvas class="hero-canvas" id="tech-canvas"></canvas>
-
-  <!-- ✅ Overlay -->
+  <!-- subtle overlay only (not background replacement) -->
   <div class="hero-overlay"></div>
 
   <div class="hero-inner">
 
-    <!-- ✅ LEFT CONTENT -->
     <div class="hero-left">
 
-      <h1>
-        Computer & Gaming PC<br>
-        Specialists in Teesside
-      </h1>
+      <h1>Computer & Gaming PC<br>Specialists in Teesside</h1>
 
       <p class="eyebrow">
         Computer, laptop, Mac, phone & console repairs
       </p>
 
-      <!-- ✅ BUTTONS -->
       <div class="hero-actions">
         <a class="btn btn-primary" href="tel:+447859897698">Call</a>
         <a class="btn btn-secondary" href="mailto:teessidetek@gmail.com">Email</a>
-        <a class="btn btn-secondary" href="https://wa.me/447859897698" target="_blank">WhatsApp</a>
+        <a class="btn btn-secondary" href="https://wa.me/447859897698">WhatsApp</a>
       </div>
 
-      <!-- ✅ ADDRESS -->
       <div class="hero-meta">
-        <span>
-          <svg class="icon" viewBox="0 0 24 24">
-            <path d="M12 21s-6-5.6-6-10a6 6 0 1 1 12 0c0 4.4-6 10-6 10z"/>
-            <circle cx="12" cy="11" r="2.5"/>
-          </svg>
-          592 Acklam Road, Middlesbrough, TS5 8BQ
-        </span>
+        <span>592 Acklam Road, Middlesbrough, TS5 8BQ</span>
       </div>
 
-      <!-- ✅ STATS -->
       <div class="hero-stats-inline">
         <span><strong>2500+</strong> Repairs</span>
         <span class="dot">•</span>
@@ -124,22 +77,24 @@
         <span class="dot">•</span>
         <span><strong>1000+ 5★</strong> Reviews</span>
       </div>
-<!-- ✅ SERVICE BUTTON STRIP -->
-<div class="hero-service-strip">
-  <span>Screen Repairs</span>
-  <span>Battery Replacements</span>
-  <span>OS Reinstalls</span><span class="break"></span>
-  <span>Console HDMI Repairs</span>
-  <span>Console Servicing</span>
-  <span>Data Recovery</span><span class="break"></span>
-  <span>Computer & Laptop Upgrades</span>
-  <span>Virus & Malware Removal</span>
-  <span>Gaming PC Builds</span>
-</div>
+
+      <!-- ✅ SERVICE PILLS -->
+      <div class="hero-service-strip">
+        <span>Screen Repairs</span>
+        <span>Battery Replacements</span>
+        <span>OS Reinstalls</span>
+
+        <span>Console HDMI Repairs</span>
+        <span>Data Recovery</span>
+        <span>Console Servicing</span>
+
+        <span>Computer & Laptop Upgrades</span>
+        <span>Virus & Malware Removal</span>
+        <span>Gaming PC Builds</span>
+      </div>
 
     </div>
 
-    <!-- ✅ RIGHT VISUAL -->
     <div class="hero-right">
       <img src="assets/hero_pc.png" class="hero-pc" alt="Gaming PC">
     </div>
@@ -148,7 +103,60 @@
 
 </section>
 
+<!-- ✅ SERVICES -->
+<section class="section services-section" id="services">
+
+  <div class="section-heading">
+    <h2>Fast, Reliable Tech Repairs Without the Guesswork</h2>
+    <p>
+      Bring in your device and we’ll diagnose the issue properly before recommending
+      the best repair option.
+    </p>
+  </div>
+
+  <div class="service-grid">
+
+    <div class="service-card">
+      <h3>Phone Repairs</h3>
+      <p>Cracked screens, battery replacements, charging issues, speakers, buttons and cameras.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Laptop Repairs</h3>
+      <p>Battery issues, overheating, broken keyboards, slow performance and screen faults.</p>
+    </div>
+
+    <div class="service-card featured">
+      <h3>Computer Repairs</h3>
+      <p>Hardware faults, upgrades, system slowdowns and custom PC solutions.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Console Repairs</h3>
+      <p>HDMI ports, overheating, storage faults, cleaning and power issues.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Data Transfer</h3>
+      <p>Move files, apps, emails and settings to new or repaired devices.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Setup & Tuning</h3>
+      <p>Device setup, updates, optimisation, backups and performance improvements.</p>
+    </div>
+
+  </div>
+
+  <div class="services-cta" style="text-align:center; margin-top:30px;">
+    <a class="btn btn-primary" href="tel:+447859897698">Call Now</a>
+  </div>
+
+</section>
+
 </main>
-  <script src="script.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
