@@ -8,7 +8,7 @@
   display: grid;
   align-items: start;
   overflow: hidden;
-
+  background: transparent; /* ✅ ensure no background override */
   padding: 5.2rem 1rem 5rem;
 
   isolation: isolate;
@@ -53,21 +53,24 @@
   z-index: -2;
 
 .hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
   background:
     linear-gradient(
       90deg,
-      rgba(5,8,7,0.45),
-      rgba(5,8,7,0.2) 45%,
-      rgba(5,8,7,0.7)
+      rgba(5,8,7,0.3),   /* ✅ MUCH lighter */
+      rgba(5,8,7,0.15) 45%,
+      rgba(5,8,7,0.5)
     ),
     linear-gradient(
       0deg,
-      #07100f 0%,
-      rgba(7,16,15,0.1) 30%,
-      rgba(7,16,15,0.05) 70%,
-      #07100f 100%
+      rgba(7,16,15,0.9),
+      rgba(7,16,15,0.05)
     );
 }
+
 
 
 /* =======================================================
