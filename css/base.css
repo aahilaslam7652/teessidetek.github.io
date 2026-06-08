@@ -64,6 +64,9 @@ body {
   font-family: Inter, system-ui, sans-serif;
   line-height: 1.5;
 
+  background: #07100f;
+  position: relative
+
   overflow-x: hidden;
 
   -webkit-font-smoothing: antialiased;
@@ -80,16 +83,13 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
   pointer-events: none;
-
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-
-  background-size: 46px 46px;
-
-  mask-image: linear-gradient(to bottom, black, transparent 78%);
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(7,16,15,0.5),
+    rgba(7,16,15,0.75)
+  );
 }
 
 /* ELEMENTS */
@@ -143,3 +143,19 @@ select {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
+
+
+
+.global-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100%; /* ✅ key change */
+  min-height: 100vh; /* ✅ safety */
+
+  z-index: -1;
+  pointer-events: none;
+}
+

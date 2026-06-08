@@ -1,53 +1,44 @@
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  z-index: 100;
-
-  display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  align-items: center;
-  gap: 0.6rem; /* was 1rem */
-
-  
-width: fit-content;
-max-width: calc(100% - 2rem);
-
-  margin: 1rem auto 0;
-
-  padding: 0.5rem 0.8rem;
-
-  min-height: 64px;
-
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(194, 255, 232, 0.12);
-
-  background: rgba(6, 12, 12, 0.85);
-  backdrop-filter: blur(18px);
-
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.28);
-
-  transition:
-    background 0.3s ease,
-    box-shadow 0.3s ease,
-    backdrop-filter 0.3s ease;
-}
-
 /* =======================================================
-   BRAND
+   HEADER (MAIN NAV BAR)
    ======================================================= */
 
+.site-header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);   /* ✅ PERFECT CENTER */
+gap: 1rem; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.menu-toggle {
-  display: none;
+  width: calc(100% - 2rem);
+  max-width: 1500px;             /* ✅ give real space */
+
+  padding: 0.5rem 1rem;
+  min-height: 64px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(194,255,232,0.12);
+
+  background: rgba(6,12,12,0.9);
+  backdrop-filter: blur(18px);
+
+  box-shadow: 0 18px 60px rgba(0,0,0,0.3);
+
+  z-index: 100;
 }
+
+
+/* =======================================================
+   BRAND (LOGO + TEXT)
+   ======================================================= */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+    flex-shrink: 0;  /* ✅ don't shrink */
+  gap: 0.4rem;
 }
 
 .brand-logo {
@@ -61,31 +52,78 @@ max-width: calc(100% - 2rem);
 }
 
 .brand small {
-  display: block;
+  display: none;
   font-size: 0.75rem;
   color: var(--muted);
 }
 
 
 /* =======================================================
-   CALL BUTTON (FIXED)
+   NAV LINKS
+   ======================================================= */
+
+
+.site-nav {
+  display: flex;
+  gap: 0.35rem;
+
+  white-space: nowrap;     /* ✅ prevents breaking */
+  flex-wrap: nowrap;       /* ✅ prevents stacking */
+
+  align-items: center;
+  justify-content: center;   /* ✅ TRUE centering */
+
+  margin-left: 20px;
+  width: 100%;               /* ✅ fill column */
+
+  
+
+  border-radius: 12px;  
+
+  background: transparent;   /* ✅ remove big block */
+  padding: 0;                /* ✅ no container padding */
+
+
+}
+
+.site-nav a {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  font-size: 0.9rem;
+  color: #d8eae4;
+  transition: all 0.2s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(98,255,183,0.08);
+  box-shadow: 0 0 8px rgba(98,255,183,0.2);
+  color: #fff;
+}
+
+.site-nav a:active {
+  transform: scale(0.96);
+}
+
+.site-nav a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+
+/* =======================================================
+   PHONE BUTTON
    ======================================================= */
 
 .header-call {
-  display: inline-flex;       /* ✅ keeps icon + text inline */
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-
-  max-width: 180px;
   justify-content: center;
-
-
-
-  width: auto;
-  max-width: fit-content;   /* ✅ stops stretching */
-  padding: 0.45rem 0.7rem;  /* tighter */
-
-
+  gap: 0.5rem;
+  flex-shrink: 0;  /* ✅ don't shrink */
+  padding: 0.45rem 0.7rem;
 
   border-radius: var(--radius-md);
   background: var(--green);
@@ -94,13 +132,11 @@ max-width: calc(100% - 2rem);
   font-weight: 900;
   font-size: 0.9rem;
 
-  white-space: nowrap;        /* ✅ prevents line break */
-
+  white-space: nowrap;
 
   box-shadow:
     0 10px 32px rgba(98,255,183,0.25),
     0 0 12px rgba(98,255,183,0.25);
-
 
   transition:
     transform 0.2s ease,
@@ -113,7 +149,7 @@ max-width: calc(100% - 2rem);
 }
 
 .header-call svg {
-  width: 18px;     /* ✅ correct icon size */
+  width: 18px;
   height: 18px;
 }
 
@@ -128,43 +164,9 @@ max-width: calc(100% - 2rem);
 
 
 /* =======================================================
-   NAV
+   MOBILE TOGGLE (KEEP HIDDEN FOR NOW)
    ======================================================= */
 
-.site-nav {
-  display: flex;
-  align-items: center;
-justify-self: center;
-
-  gap: 0.35rem;
-
-  padding: 0.25rem;
-
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.04);
+.menu-toggle {
+  display: none;
 }
-
-.site-nav a {
-  padding: 0.55rem 0.9rem;
-  border-radius: 7px;
-
-  font-size: 0.9rem;
-  color: #d8eae4;
-
-  transition: all 0.2s ease;
-}
-
-.site-nav a:hover {
-  background: rgba(98, 255, 183, 0.1);
-  color: #fff;
-}
-
-.site-nav a:active {
-  transform: scale(0.96);
-}
-
-.site-nav a:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 2px;
-}
-``

@@ -280,3 +280,37 @@ NOT with "composes"
     transition: none !important;
   }
 }
+/* === SERVICE CARDS === */
+.service-card {
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(7,16,15,0.6);
+  border: 1px solid rgba(98,255,183,0.15);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #00ff9c;
+  box-shadow: 0 10px 30px rgba(0, 255, 156, 0.2);
+}
+
+.service-card h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.service-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Optional featured card */
+.service-card.featured {
+  border-color: #00ff9c;
+  background: rgba(0,255,156,0.05);
+}
