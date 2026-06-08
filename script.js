@@ -49,16 +49,18 @@
   let dpr = 1;
   let frame = 0;
 
-  function fitCanvas() {
-    const rect = canvas.getBoundingClientRect();
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = Math.max(320, rect.width);
-    height = Math.max(420, rect.height);
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    seedScene();
-  }
+function fitCanvas() {
+  const heroSection = document.querySelector(".hero");
+  const rect = heroSection.getBoundingClientRect(); // ✅ KEY FIX
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const width = rect.width;
+  const height = rect.height;
+  canvas.width = Math.floor(width * dpr);
+  canvas.height = Math.floor(height * dpr);
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = rect.height + "px";
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
 
   function seedScene() {
     particles.length = 0;
