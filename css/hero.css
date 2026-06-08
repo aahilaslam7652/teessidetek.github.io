@@ -1,11 +1,16 @@
-/* HERO CONTAINER */
+/* =======================================================
+   HERO CONTAINER
+   ======================================================= */
+
 .hero {
   position: relative;
   min-height: 91svh;
   display: grid;
   align-items: start;
   overflow: hidden;
+
   padding: 5.2rem 1rem 5rem;
+
   isolation: isolate;
 }
 
@@ -14,13 +19,18 @@
   position: absolute;
   right: 3%;
   bottom: 50px;
+
   width: 450px;
   height: 450px;
+
   background: radial-gradient(circle, rgba(98,255,183,0.15), transparent 70%);
-  z-index: 0;
 }
 
-/* BACKGROUND */
+
+/* =======================================================
+   BACKGROUND
+   ======================================================= */
+
 .hero-canvas,
 .hero-overlay {
   position: absolute;
@@ -39,43 +49,70 @@
     linear-gradient(0deg, #07100f 0%, rgba(7,16,15,0.18) 32%, rgba(7,16,15,0.1) 70%, #07100f 100%);
 }
 
-/* LAYOUT */
+
+/* =======================================================
+   LAYOUT
+   ======================================================= */
+
 .hero-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding-left: 1rem;
-  padding-right: 1rem;
+  gap: 2rem;
 
-  max-width: 1200px;
+  max-width: var(--max);
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .hero-left {
   flex: 1;
-  max-width: 50%;
+  max-width: 520px;
   z-index: 5;
 }
 
 .hero-right {
   flex: 1;
-  max-width: 50%;
-  height: 450px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: relative;
   z-index: 5;
+
+  min-height: 420px;
 }
 
-/* PC */
-.hero-pc {
+
+/* =======================================================
+   VISUALS
+   ======================================================= */
+
+/* Background logo */
+.hero-logo {
   position: absolute;
-  right: 5%;
-  bottom: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 420px;
+
+  opacity: 0.06;
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* PC (main visual) */
+.hero-pc {
+  position: relative;
+  z-index: 3;
 
   width: 100%;
   max-width: 460px;
 
-  z-index: 3;
   pointer-events: none;
   transition: transform 0.25s ease;
 
@@ -90,18 +127,19 @@
   animation: glowPulse 4s ease-in-out infinite;
 }
 
-/* XBOX */
+/* Xbox accent */
 .hero-xbox {
   position: absolute;
-  right: 18%;
-  bottom: 180px;
+  right: 12%;
+  bottom: 140px;
 
-  width: 140px;
+  width: 130px;
 
   transform: rotate(-12deg);
   opacity: 0.85;
 
   z-index: 2;
+
   transition: transform 0.25s ease;
 
   filter:
@@ -113,20 +151,25 @@
   animation: floatXbox 6s ease-in-out infinite;
 }
 
-/* TEXT */
+
+/* =======================================================
+   TEXT
+   ======================================================= */
+
 .eyebrow {
-  margin: 0 0 0.6rem;
+  margin-bottom: 0.6rem;
+
   color: var(--green);
   font-size: 0.78rem;
   font-weight: 900;
+
   text-transform: uppercase;
 }
 
-h1 {
-  max-width: 780px;
+.hero h1 {
   margin-bottom: 1rem;
-  color: #fff;
 
+  color: #fff;
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   line-height: 1.1;
 
@@ -139,59 +182,23 @@ h1 {
 
 .hero-copy {
   max-width: 650px;
+
   color: #d9ebe6;
   font-size: 1.32rem;
+
   animation: fadeUp 1s ease;
 }
 
-/* BUTTONS */
-.hero-actions {flogo
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 2rem;
-}
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* =======================================================
+   META / STATS
+   ======================================================= */
 
-  min-height: 48px;
-  padding: 0 1.1rem;
-
-  border-radius: 8px;
-  font-weight: 900;
-
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background: var(--green);
-  color: #04100d;
-  box-shadow: 0 15px 42px rgba(98,255,183,0.25);
-}
-
-.btn-primary:hover {
-  box-shadow: 0 20px 50px rgba(98,255,183,0.35);
-}
-
-.btn-secondary {
-  border: 1px solid rgba(64,233,255,0.42);
-  background: rgba(6,20,20,0.7);
-  color: #e9fffb;
-  opacity: 0.9;
-}
-
-/* META */
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
+
   margin-top: 2rem;
 }
 
@@ -199,38 +206,45 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+
   padding: 0.65rem 0.8rem;
 
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: rgba(8,16,15,0.56);
 
   animation: fadeUp 1.2s ease;
 }
 
-/* STATS */
 .hero-stats {
   position: absolute;
   left: 50%;
   bottom: 140px;
+
   transform: translateX(-50%);
+
   display: flex;
   padding: 14px 24px;
 
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   background: rgba(7,16,15,0.75);
 
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
 }
 
 .hero-stats:hover {
   transform: translateX(-50%) scale(1.02);
 }
 
-/* SERVICE STRIP */
+
+/* =======================================================
+   SERVICE STRIP
+   ======================================================= */
+
 .hero-service-strip {
   position: absolute;
   left: 50%;
   bottom: 0;
+
   transform: translateX(-50%);
 
   display: flex;
@@ -238,13 +252,18 @@ h1 {
   justify-content: center;
 
   gap: 14px;
+
   max-width: 900px;
   padding: 1rem;
 
   background: rgba(7,16,15,0.72);
 }
 
-/* ANIMATIONS */
+
+/* =======================================================
+   ANIMATIONS
+   ======================================================= */
+
 @keyframes glowPulse {
   0%,100% { filter: brightness(1); }
   50% { filter: brightness(1.2); }
@@ -257,66 +276,5 @@ h1 {
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* MOBILE IMPROVEMENTS */
-@media (max-width: 768px) {
-  .hero-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-
-.hero-left {
-  flex: 1;
-  max-width: 520px;
-}
-
-
-
-.hero-right {
-  flex: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-}
-
-
-  .hero-pc {
-    position: relative;
-    right: 3%;
-    margin: 0 auto;
-  }
-
-
-.hero-logo {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: 420px;
-
-  opacity: 0.06;   /* 🔥 CRITICAL */
-  z-index: 1;
-
-  pointer-events: none;
-}
-
-
-  .hero-xbox {
-    display: none; /* ✅ cleaner mobile */
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-copy {
-    font-size: 1rem;
-  }
+  to   { opacity: 1; transform: translateY(0); }
 }
