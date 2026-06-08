@@ -112,7 +112,7 @@
     const offset = (frame * 0.1) % grid;
 
     for (let x = -grid + offset; x < width + grid; x += grid) {
-      ctx.strokeStyle = "rgba(154,255,231,0.03)";
+      ctx.strokeStyle = "rgba(154,255,231,0.04)";
       ctx.beginPath();
       ctx.moveTo(x, 0);
       ctx.lineTo(x, height);
@@ -129,49 +129,64 @@
     ctx.restore();
   }
 
-  function drawParticles() {
-    ctx.save();
+function drawParticles() {
+  ctx.save();
 
-    particles.forEach((p) => {
-      p.x += Math.cos(p.angle) * p.speed;
-      p.y += Math.sin(p.angle) * p.speed;
+  particles.forEach((p) => {
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
 
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
 
-      ctx.fillStyle = "rgba(64,233,255,0.5)";
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
-    });
+    const alpha = 0.3 + Math.sin(frame * 0.02 + p.x) * 0.15;
 
-    ctx.restore();
-  }
+    ctx.fillStyle = `rgba(64,233,255,${alpha})`;
 
-  function drawTraces() {
-    ctx.save();
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = "rgba(64,233,255,0.4)";
 
-    traces.forEach((t) => {
-      const pulse = (Math.sin(frame * t.speed + t.phase) + 1) / 2;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fill();
+  });
 
-      ctx.strokeStyle = `rgba(64,233,255,${0.2 + pulse * 0.5})`;
-      ctx.lineWidth = 1 + pulse * 2;
+  ctx.restore();
+}
 
-      ctx.beginPath();
-      if (t.vertical) {
-        ctx.moveTo(t.x, t.y - t.length / 2);
-        ctx.lineTo(t.x, t.y + t.length / 2);
-      } else {
-        ctx.moveTo(t.x - t.length / 2, t.y);
-        ctx.lineTo(t.x + t.length / 2, t.y);
-      }
-      ctx.stroke();
-    });
 
-    ctx.restore();
-  }
+function drawTraces() {
+  ctx.save();
+  ctx.lineCap = "round";
+
+  traces.forEach((t) => {
+    const pulse = (Math.sin(frame * t.speed + t.phase) + 1) / 2;
+
+    ctx.strokeStyle = `rgba(64,233,255,${0.3 + pulse * 0.5})`;
+    ctx.lineWidth = 1 + pulse * 2;
+
+    ctx.shadowBlur = 15;
+    ctx.shadowColor = "rgba(64,233,255,0.5)";
+
+    ctx.beginPath();
+
+    if (t.vertical) {
+      ctx.moveTo(t.x, t.y - t.length / 2);
+      ctx.lineTo(t.x, t.y + t.length / 2);
+    } else {
+      ctx.moveTo(t.x - t.length / 2, t.y);
+      ctx.lineTo(t.x + t.length / 2, t.y);
+    }
+
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+  });
+
+  ctx.restore();
+}
 
   /* =============================
      MAIN LOOP
@@ -183,9 +198,9 @@
     ctx.clearRect(0, 0, width, height);
 
     const bg = ctx.createLinearGradient(0, 0, width, height);
-    bg.addColorStop(0, "#040706");
-    bg.addColorStop(0.5, "#081211");
-    bg.addColorStop(1, "#06100f");
+bg.addColorStop(0, "#040706");
+bg.addColorStop(0.35, "#07100f");
+bg.addColorStop(1, "#050908");
 
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, width, height);
