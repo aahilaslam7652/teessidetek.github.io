@@ -7,7 +7,7 @@
   z-index: 100;
 
   display: grid;
-  grid-template-columns: auto 1fr auto; /* ✅ FIXED layout */
+  grid-template-columns: auto auto 1fr auto;
   align-items: center;
   gap: 1rem;
 
@@ -35,6 +35,11 @@
 /* =======================================================
    BRAND
    ======================================================= */
+
+
+.menu-toggle {
+  display: none;
+}
 
 .brand {
   display: flex;
@@ -113,7 +118,7 @@
 .site-nav {
   display: flex;
   align-items: center;
-  justify-content: center; /* ✅ centers nav nicely */
+    justify-content: flex-end;
 
   gap: 0.35rem;
 
