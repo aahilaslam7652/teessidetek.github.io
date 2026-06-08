@@ -43,6 +43,7 @@
 
 .hero-canvas {
   z-index: -3;
+     background: transparent;
 }
 
 .hero-overlay {
@@ -51,18 +52,19 @@
 
   z-index: -2;
 
+.hero-overlay {
   background:
     linear-gradient(
       90deg,
-      rgba(5,8,7,0.55),   /* ✅ LIGHTER → allows background */
-      rgba(5,8,7,0.35) 45%,
-      rgba(5,8,7,0.75)
+      rgba(5,8,7,0.45),
+      rgba(5,8,7,0.2) 45%,
+      rgba(5,8,7,0.7)
     ),
     linear-gradient(
       0deg,
       #07100f 0%,
-      rgba(7,16,15,0.15) 30%,
-      rgba(7,16,15,0.08) 70%,
+      rgba(7,16,15,0.1) 30%,
+      rgba(7,16,15,0.05) 70%,
       #07100f 100%
     );
 }
