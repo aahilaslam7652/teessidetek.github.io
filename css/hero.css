@@ -172,7 +172,7 @@
 .hero-stats {
   position: absolute;
   left: 50%;
-  bottom: 140px;
+  bottom: 300px;
   transform: translateX(-50%);
   display: flex;
   padding: 14px 24px;
