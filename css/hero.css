@@ -54,10 +54,9 @@
 }
 
 .hero-left {
-  position: relative;
-  flex: 1;
-  max-width: 520px;
-  z-index: 5;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero-right {
