@@ -1,62 +1,78 @@
 /* === HERO CONTAINER === */
 .hero {
   position: relative;
-  min-height: auto;
+  min-height: unset;
   display: grid;
   align-items: start;
-  overflow: hidden;
+  overflow: visible;
+  padding: 5rem 1rem 5rem;
+   padding-bottom: 0.1rem; 
+   
 
-  padding: 5rem 1rem 8em; /* reduced bottom */
 }
 
-
-
-/* === HERO OVERLAY (SOFT — NOT BLOCKING) === */
-.hero-overlay {
+.hero::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 120px;
+
   background: linear-gradient(
-    180deg,
-    rgba(7,16,15,0.4) 0%,
-    rgba(7,16,15,0.25) 50%,
-    rgba(7,16,15,0.35) 100%
+    to bottom,
+    transparent,
+    rgba(7,16,15,0.9)
   );
 }
+.global-canvas::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  background: rgba(7,16,15,0.35);
+}
+
 
 /* === LAYOUT === */
+
 .hero-inner {
-  display: flex;
-    justify-content: flex-start;   /* ✅ KEY FIX */
+
+  display: grid;
+  
+grid-template-columns: 0.85fr 220px 320px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   position: relative;
-    padding: 0 2rem;
+  gap: 30px;
   z-index: 5;
-  
-  padding-left: 2rem;
-  padding-right: 2rem;
-
 }
+
 
 .hero-left {
   position: relative;
   text-align: left;
-  padding-right: clamp(260px, 28vw, 480px);
+    padding-right: 0; /* ✅ remove hack completely */
   display: flex;
   flex-direction: column;
   z-index: 5;
+   gap: 0.4rem;
+  
 }
 
 .hero-right {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: auto; /* ✅ FIXED (was 50%) */
-  height: auto;
-  pointer-events: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
 }
+
+
+
 
 /* === BACKGROUND GRAPHICS === */
 .hero-logo {
@@ -85,13 +101,19 @@
 
 /* === MAIN VISUAL === */
 .hero-pc {
-  position: absolute;
-    transform: translateX(-40px);
-      transform: translateX(-40px) translateY(-10px);
-  width: 360px;
-  max-width: 45vw;
-  right: 200px;
-  bottom: -60px;
+
+  position: relative;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+
+
+
+  transform: none;
+  width: 100%;
+  max-width: 320px;
+
+
   z-index: 3;
   pointer-events: none;
 
@@ -116,12 +138,15 @@
 
 .hero h1 {
   margin: 0;
-  margin-bottom: 0.7rem;
-  color: #fff;
-  max-width: 20ch;
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  margin-bottom: 1.1rem;   /* was ~0.7rem */
+white-space: nowrap;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
   line-height: 1.1;
+max-width: 20ch;
+  color: #fff;
   animation: fadeUp 0.8s ease;
+
   text-shadow:
     0 0 24px rgba(64,233,255,0.24),
     0 0 70px rgba(98,255,183,0.16);
@@ -136,12 +161,14 @@
 /* === ACTIONS === */
 .hero-actions {
   display: flex;
+   margin-bottom: 0.8rem; 
   gap: 0.6rem;
 }
 
 /* === META === */
 .hero-meta {
   margin-top: 14px;
+  margin-top: 0.8rem;
 }
 
 .hero-meta span {
@@ -159,18 +186,22 @@
 
 /* === STATS (BOXED VERSION) === */
 .hero-stats {
+max-width: 520px;
   display: flex;
   gap: 10px;
   margin-top: 16px;
-  flex-wrap: wrap;
-  max-width: 500px;
-  justify-content: flex-start;
+  flex-wrap: nowrap;   /* ✅ forces one row */
+    max-width: none;
+  margin-top: 0.6rem;   /* ✅ tighter */
+  margin-bottom: 0.8rem; /* ✅ creates space below */
 }
 
 .hero-stat {
   position: relative;
-  flex: 1;
-  min-width: 140px;
+
+  flex: 1;             /* ✅ all 3 take equal width */
+  min-width: 0;        /* ✅ prevents overflow */
+
   padding: 12px 14px;
   border-radius: 12px;
   background: rgba(7,16,15,0.65);
@@ -226,6 +257,7 @@
   justify-content: flex-start;
   gap: 6px;
   max-width: 800px;
+    margin-top: 18px;
 }
 
 .hero-service-strip span {
@@ -255,4 +287,86 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
+}
+/* ✅ TRUST PANEL (RIGHT SIDE) */
+
+.hero-trust {
+  position: relative;    /* ✅ IMPORTANT */
+  top: auto;
+  right: auto;
+  transform: none;
+ justify-self: start;  /* ✅ aligns to left edge of its column */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+    max-width: 200px;
+    gap: 8px;    
+     margin-top: 8px;
+  align-self: center;  /* ✅ vertically centred */
+  width: 100%;
+
+}
+
+
+
+
+/* ✅ INDIVIDUAL ITEMS */
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(0, 255, 150, 0.05);
+  border: 1px solid rgba(0, 255, 150, 0.15);
+  color: #eafff7;
+  transition: all 0.25s ease;
+  animation: fadeSlideIn 0.8s ease forwards;
+    backdrop-filter: blur(6px);
+}
+
+/* ✅ ANIMATION (must be OUTSIDE) */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ✅ ICONS */
+.trust-item i {
+  font-size: 20px;
+  color: #00ffa2;
+  min-width: 24px;
+}
+
+/* ✅ TEXT */
+.trust-item strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+.trust-item span {
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+/* ✅ HOVER EFFECT */
+.trust-item:hover {
+  background: rgba(0, 255, 150, 0.12);
+  border-color: rgba(0, 255, 150, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 150, 0.25);
+}
+.trust-label {
+  position: absolute;
+  right: 160px;
+  top: calc(50% - 90px); /* sits nicely above cards */
+  font-size: 11px;
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
