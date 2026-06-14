@@ -1,0 +1,24 @@
+
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.area-card {
+  padding: 18px;
+  text-align: center;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.area-card:hover {
+  background: rgba(0,255,156,0.08);
+  border-color: rgba(0,255,156,0.4);
+  transform: translateY(-3px);
+}

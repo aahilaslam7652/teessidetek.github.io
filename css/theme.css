@@ -1,0 +1,36 @@
+/* GLOBAL SECTION SPACING SYSTEM */
+
+:root {
+  --section-gap: clamp(30px, 5vw, 60px);
+}
+
+
+/* SECTION BASE */
+
+.section {
+  width: 100%;
+  padding: var(--section-gap) 0;
+}
+
+
+/* SECTION HEADING */
+
+.section-heading {
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  text-shadow:
+    0 0 20px rgba(0,255,150,0.08),
+    0 0 40px rgba(0,255,150,0.05);
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 1.02rem;
+}

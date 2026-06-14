@@ -1,0 +1,30 @@
+/* SERVICES SECTION */
+
+.services-section {
+  position: relative;
+  z-index: 5;
+}
+
+/* SERVICE GRID */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

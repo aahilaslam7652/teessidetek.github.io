@@ -1,59 +1,109 @@
 :root {
-  color-scheme: dark;
-
-  /* ✅ CORE COLORS */
+  /* COLOR SYSTEM */
   --bg: #07100f;
   --bg-2: #101716;
-  --panel: rgba(12, 22, 21, 0.82);
+  --panel: rgba(12,22,21,0.82);
   --panel-strong: #13211f;
 
-  --line: rgba(194, 255, 232, 0.18);
-  --line-strong: rgba(125, 255, 213, 0.42);
+  --line: rgba(194,255,232,0.18);
+  --line-strong: rgba(125,255,213,0.42);
 
   --text: #edf9f5;
   --muted: #a7bbb4;
+
+  /* SEMANTIC TEXT (upgrade) */
+  --text-primary: #edf9f5;
+  --text-secondary: #a7bbb4;
+  --text-tertiary: rgba(255,255,255,0.5);
 
   --cyan: #40e9ff;
   --green: #62ffb7;
   --amber: #ffcc66;
   --pink: #ff5fa2;
-
   --ink: #050807;
-  --shadow: 0 24px 80px rgba(0,0,0,0.42);
 
+  /* SHADOW SCALE (upgrade) */
+  --shadow-sm: 0 8px 24px rgba(0,0,0,0.25);
+  --shadow-md: 0 16px 48px rgba(0,0,0,0.35);
+  --shadow-lg: 0 24px 80px rgba(0,0,0,0.42);
+
+  /* TYPOGRAPHY EXTENSIONS */
+  --tracking-normal: 0.02em;
+  --tracking-wide: 0.04em;
+
+  /* MOTION */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.45s ease;
+
+  --motion-shift-sm: 0.2rem;
+
+  /* EFFECTS */
+  --glow-sm: 0 0 0.4rem var(--green);
+
+  /* OPACITY SYSTEM */
+  --opacity-strong: 0.9;
+  --opacity-high: 0.85;
+  --opacity-medium: 0.65;
+  --opacity-low: 0.5;
+  --opacity-subtle: 0.3;
+
+  /* BREAKPOINTS */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  /* LAYOUT */
   --max: 1160px;
+  --content-narrow: 700px;
+  --scroll-offset: 100px;
 
-  /* ✅ SPACING SYSTEM (UPDATED) */
+  /* SPACING SYSTEM */
+  --space-2xs: 0.125rem; /* NEW (micro spacing) */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
 
-  /* 🔥 SECTION GAP (FIXED — tighter + consistent) */
-  --section-gap: clamp(30px, 5vw, 60px);
-
-  /* ✅ TYPOGRAPHY */
+  /* TYPOGRAPHY */
+  --text-xs: 0.75rem; /* NEW */
   --text-sm: 0.85rem;
   --text-base: 1rem;
   --text-lg: 1.2rem;
   --text-xl: 1.4rem;
-  --text-hero: clamp(2.2rem, 4.5vw, 3.4rem);
 
-  /* ✅ RADIUS */
+  --text-hero: clamp(2.2rem, 4.5vw, 3.4rem);
+  --title-lg: clamp(2rem, 3.5vw, 2.6rem);
+
+  /* FONT WEIGHTS */
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* LINE HEIGHT */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-loose: 1.7;
+
+  /* RADIUS */
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 14px;
+
+  /* BACKGROUND EFFECTS */
+  --bg-grad-1: rgba(64,233,255,0.1);
+  --bg-grad-2: rgba(98,255,183,0.08);
+  --bg-base-blend: #091211;
+  --bg-deep: #0d1110;
 }
 
-
-/* =======================================================
-   RESET
-   ======================================================= */
-
-*,
-*::before,
-*::after {
+/* RESET */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -61,52 +111,24 @@ html {
   scroll-behavior: smooth;
 }
 
+/* BODY */
 body {
   margin: 0;
   min-width: 320px;
-
-  color: var(--text);
+  color: var(--text-primary);
   font-family: Inter, system-ui, sans-serif;
-  line-height: 1.5;
-
-  background: #07100f;
-  position: relative; /* ✅ FIXED missing ; */
-
+  line-height: var(--leading-normal);
   overflow-x: hidden;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   background:
-    radial-gradient(circle at 12% 18%, rgba(64,233,255,0.1), transparent 24rem),
-    radial-gradient(circle at 88% 10%, rgba(98,255,183,0.08), transparent 23rem),
-    linear-gradient(180deg, var(--bg), #091211 48%, #0d1110);
+    radial-gradient(circle at 12% 18%, var(--bg-grad-1), transparent 24rem),
+    radial-gradient(circle at 88% 10%, var(--bg-grad-2), transparent 23rem),
+    linear-gradient(180deg, var(--bg), var(--bg-base-blend) 48%, var(--bg-deep));
 }
 
-
-/* =======================================================
-   GRID OVERLAY
-   ======================================================= */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(7,16,15,0.5),
-    rgba(7,16,15,0.75)
-  );
-}
-
-
-/* =======================================================
-   ELEMENTS
-   ======================================================= */
-
+/* GLOBAL ELEMENTS */
 a {
   color: inherit;
   text-decoration: none;
@@ -124,11 +146,7 @@ select {
   font: inherit;
 }
 
-
-/* =======================================================
-   ACCESSIBILITY
-   ======================================================= */
-
+/* ACCESSIBILITY */
 .skip-link,
 .sr-only {
   position: absolute;
@@ -141,56 +159,59 @@ select {
 
 .skip-link:focus {
   position: absolute;
-  left: 1rem;
-  top: 1rem;
-
+  left: var(--space-md);
+  top: var(--space-md);
   width: auto;
   height: auto;
-
-  padding: 0.75rem 1rem;
-
-  border-radius: 8px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
   background: var(--green);
   color: var(--ink);
-
   z-index: 20;
 }
-
-
-/* =======================================================
-   FOCUS
-   ======================================================= */
 
 :focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
 
-
-/* =======================================================
-   BACKGROUND CANVAS
-   ======================================================= */
-
-.global-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100%;
-  min-height: 100vh;
-
-  z-index: -1;
-  pointer-events: none;
+/* LAYOUT */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
 }
 
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+.global-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
 
-/* =======================================================
-   LAYOUT
-   ======================================================= */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+/* SECTION HEADINGS */
+.section-heading {
+  margin: 0;
+  max-width: var(--content-narrow);
+  margin-right: auto;
+  text-align: left;
+  scroll-margin-top: var(--scroll-offset);
+}
+.section-title {
+  font-size: var(--title-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-sm);
+}
+.section-subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  opacity: var(--opacity-medium); /* FIXED */
+  line-height: var(--leading-normal);
 }

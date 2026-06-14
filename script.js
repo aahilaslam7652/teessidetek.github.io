@@ -301,3 +301,39 @@ function drawTraces() {
   }
 
 })();
+
+async function load(id, file) {
+  const res = await fetch(file);
+  document.getElementById(id).innerHTML = await res.text();
+}
+
+// load header/footer
+load("header", "components/header.html");
+load("footer", "components/footer.html");
+
+// load all sections into main
+async function loadMain() {
+  const sections = [
+    "hero",
+    "assurance",
+    "services",
+    "process",
+    "pricing",
+    "reviews",
+    "tech",
+    "location",
+    "faq",
+    "contact"
+  ];
+
+  let content = "";
+
+  for (let s of sections) {
+    const res = await fetch(`components/${s}.html`);
+    content += await res.text();
+  }
+
+  document.getElementById("main").innerHTML = content;
+}
+
+loadMain();

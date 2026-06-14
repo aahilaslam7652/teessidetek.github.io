@@ -1,0 +1,104 @@
+/* PROCESS SECTION */
+
+.process-section {
+  position: relative;
+  z-index: 5;
+
+}
+
+
+
+/* GRID */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* STEP HEADER */
+
+.process-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* STEP NUMBER */
+
+.step {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(0,255,156,0.5);
+  margin-right: 4px;
+}
+
+/* ICON STYLE */
+
+.process-section .service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(0,255,156,0.08);
+  color: #00ff9c;
+  font-size: 16px;
+  box-shadow: inset 0 0 0 1px rgba(0,255,156,0.2);
+  transition: all 0.25s ease;
+}
+
+/* ICON HOVER */
+
+.process-section .service-card:hover .service-icon {
+  background: rgba(0,255,156,0.15);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,255,156,0.3),
+    0 0 12px rgba(0,255,156,0.15);
+}
+
+/* CARD POLISH */
+
+.process-section .service-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.process-section .service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* CARD GLOW OVERLAY */
+
+.process-section .service-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(0,255,156,0.08),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.process-section .service-card:hover::after {
+  opacity: 1;
+}

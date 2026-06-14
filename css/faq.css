@@ -1,0 +1,102 @@
+/* FAQ SECTION */
+.faq-section {
+  text-align: left;
+}
+
+/* LAYOUT */
+.faq-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  max-width: var(--max);
+}
+
+/* ITEM */
+.faq-item {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(8px);
+
+  transition: var(--transition-fast);
+}
+.faq-item:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--glow-sm);
+}
+
+/* QUESTION */
+.faq-question {
+  width: 100%;
+  padding: var(--space-sm);
+  margin: 0; /* ✅ ensure no inherited spacing */
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight); /* ✅ tighter heading */
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ICON */
+.faq-icon {
+  display: inline-block;
+  transition: var(--transition-base);
+
+  color: var(--text-tertiary);
+  font-size: var(--text-base);
+}
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+  color: var(--cyan);
+}
+
+/* ANSWER */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 var(--space-sm);
+  margin: 0; /* ✅ kill any stray spacing */
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translateY(calc(var(--space-2xs) * -1));
+  transition: var(--transition-base);
+}
+
+/* ✅ CRITICAL: remove default paragraph gaps */
+.faq-answer p {
+  margin: 0;
+}
+
+/* ACTIVE */
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  /* ✅ tighter top spacing (this was your gap) */
+  padding: var(--space-2xs) var(--space-sm) var(--space-sm);
+  opacity: var(--opacity-high);
+  transform: translateY(0);
+}
+
+.faq-item.active {
+  border-color: var(--line-strong);
+  box-shadow:
+    0 0 16px rgba(98,255,183,0.12),
+    0 0 30px rgba(98,255,183,0.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
+  .faq-question {
+    font-size: var(--text-sm);
+  }
+}

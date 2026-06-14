@@ -1,10 +1,5 @@
-/* =======================================================
-   TABLET (≤ 920px)
-   ======================================================= */
-
 @media (max-width: 920px) {
 
-  /* HEADER */
   .site-header {
     grid-template-columns: 1fr auto;
   }
@@ -16,14 +11,11 @@
   .site-nav {
     position: absolute;
     top: calc(100% + 0.5rem);
-    right: 0;
-    left: 0;
-
-    display: none;
+    inset-inline: 0;
     flex-direction: column;
-
     padding: 0.55rem;
-    background: rgba(6, 12, 12, 0.94);
+    background: rgba(6,12,12,0.94);
+    display: none;
   }
 
   .site-nav.is-open {
@@ -34,44 +26,22 @@
     display: none;
   }
 
-  /* HERO */
   .hero {
     min-height: 90svh;
   }
 
   .hero h1 {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 5vw, var(--text-hero));
   }
 
   .hero-copy {
     font-size: 1.16rem;
   }
-
-  /* GRID STACKING */
-  .intro-grid,
-  .service-grid,
-  .console-photo-grid,
-  .review-grid,
-  .process-panel,
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-
-  .process-panel,
-  .contact-content {
-    gap: 1.2rem;
-  }
-
 }
 
 
-/* =======================================================
-   SMALL TABLET / MOBILE (≤ 768px)
-   ======================================================= */
-
 @media (max-width: 768px) {
 
-  /* HERO STACK */
   .hero .hero-inner {
     flex-direction: column;
     text-align: center;
@@ -90,40 +60,28 @@
 
   .hero-pc {
     position: relative;
-    right: auto;
     margin: 0 auto;
   }
 
   .hero-xbox {
     display: none;
   }
-
 }
 
 
-/* =======================================================
-   MOBILE (≤ 620px)
-   ======================================================= */
-
 @media (max-width: 620px) {
 
-  /* HEADER */
   .site-header {
-    width: min(100% - 1rem, 1240px);
+    width: calc(100% - 1rem);
     margin-top: 0.5rem;
   }
 
-  .brand small {
-    display: none;
-  }
-
-  /* HERO */
   .hero {
     padding: 7rem 1rem 5rem;
   }
 
   .hero h1 {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
   }
 
   .hero-copy {
@@ -139,37 +97,19 @@
     width: 100%;
   }
 
-  /* CARDS */
-  .service-card,
-  .review-card {
-    min-height: auto;
-  }
-
-  /* FOOTER */
   .site-footer {
     flex-direction: column;
   }
-
 }
 
 
-/* =======================================================
-   REDUCED MOTION
-   ======================================================= */
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
     animation: none !important;
     transition: none !important;
   }
-
 }
-@media (max-width: {
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
-}
-``

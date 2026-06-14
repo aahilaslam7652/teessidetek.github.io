@@ -1,0 +1,165 @@
+/* =======================================================
+   TECH STRIP (CLEAN + PREMIUM)
+======================================================= */
+
+.tech-strip {
+  text-align: center;
+  position: relative;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 20, 15, 0.4),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+/* divider */
+.tech-strip::before {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 2px;
+  margin: 0 auto 2rem;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00ff9c,
+    transparent
+  );
+}
+
+/* center glow */
+.tech-strip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+
+  width: 500px;
+  height: 140px;
+
+  background: radial-gradient(
+    ellipse,
+    rgba(0,255,156,0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* keep content above glow */
+.tech-strip .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* TITLE */
+
+.tech-title {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.6px;
+}
+
+/* SLIDER */
+
+.tech-slider {
+  overflow: hidden;
+  position: relative;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    white 15%,
+    white 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    white 15%,
+    white 85%,
+    transparent 100%
+  );
+}
+
+/* TRACK */
+
+.tech-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+
+  animation: scroll 32s linear infinite;
+}
+
+/* ITEM */
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease, opacity 0.4s ease;
+  font-size: 1.8rem;
+  color: #dffff4;
+  opacity: 0.75;
+}
+
+/* ICONIFY ICONS */
+
+.tech-item iconify-icon {
+  font-size: 32px;
+  color: #b8ffe5;
+
+  filter: drop-shadow(0 0 6px rgba(0,255,156,0.4));
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+
+.tech-item:hover {
+  opacity: 1;
+  transform: translateY(-3px) scale(1.08);
+}
+
+.tech-item:hover iconify-icon {
+  color: #00ff9c;
+  transform: scale(1.15);
+
+  filter: drop-shadow(0 0 12px rgba(0,255,156,1));
+}
+
+/* PAUSE SCROLL */
+
+.tech-slider:hover .tech-track {
+  animation-play-state: paused;
+}
+
+/* ANIMATION */
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 600px) {
+  .tech-track {
+    gap: 35px;
+  }
+
+  .tech-item {
+    font-size: 1rem;
+  }
+
+  .tech-item iconify-icon {
+    font-size: 24px;
+  }
+}
