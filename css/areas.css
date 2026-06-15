@@ -82,19 +82,7 @@
 }
 
 
-/* ========================
-   ARROW INDICATOR
-======================== */
-.area-card::after {
-  content: "→";
-  display: block;
-  margin-top: var(--space-xs);
-  font-size: var(--text-sm);
-  opacity: var(--opacity-low);
-  transition:
-    transform var(--transition-fast),
-    opacity var(--transition-fast);
-}
+
 
 
 /* ========================
