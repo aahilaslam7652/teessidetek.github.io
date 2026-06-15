@@ -225,3 +225,20 @@
   color: var(--color-primary);
   flex-shrink:0;
 }
+
+.reviews-section .section-inner {
+  gap: 0px
+}
+
+
+.reviews-section .container {
+  max-width: 1200px; /* ✅ or match your card container */
+}
+
+
+.reviews-section {
+  padding-bottom: var(--space-2xs);  /* ✅ restore proper section spacing */
+  margin-top: 0px;          /* ✅ kill inherited spacing */
+  padding-top: 0px;      /* ✅ bring heading closer */
+    padding-bottom: 0px;
+}

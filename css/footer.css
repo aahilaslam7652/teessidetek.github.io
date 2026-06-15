@@ -6,50 +6,24 @@
   position: relative;
 }
 
-/* TOP ACCENT LINE */
-.footer::before {
-  content: "";
-  display: block;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--green) 25%,
-    var(--line-strong) 50%,
-    var(--green) 75%,
-    transparent 100%
-  );
-  opacity: var(--opacity-subtle);
-}
-
-/* ✅ GRID (tight + controlled like Vercel) */
-
+/* GRID */
 .footer-grid {
   display: grid;
-
-grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
-
+  grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
   gap: var(--space-2xs);
-
   padding: var(--space-sm) var(--space-md) var(--space-xs);
   max-width: var(--max);
   margin: 0 auto;
 }
-
 
 /* ✅ HOVER ZONES */
 .footer-col {
   padding: var(--space-2xs);
   border-radius: var(--radius-md);
   transition: var(--transition-fast);
-
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs); /* consistent vertical rhythm */
-}
-
-.footer-col:hover {
-  background: var(--panel);
 }
 
 /* BRAND */
@@ -61,10 +35,6 @@ grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
   line-height: var(--leading-tight);
   opacity: 1;
   transition: var(--transition-fast);
-}
-
-.footer-col h3:hover {
-  text-shadow: var(--glow-sm);
 }
 
 /* HEADINGS */
@@ -86,7 +56,7 @@ grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
   transition: var(--transition-fast);
 }
 
-/* ✅ LINK HOVER */
+/* LINK HOVER */
 .footer-col a:hover {
   color: var(--green);
   opacity: 1;
@@ -94,24 +64,12 @@ grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
   text-shadow: var(--glow-sm);
 }
 
-/* ✅ QUICK LINKS (FIXED — no more 2-column gap issue) */
-
+/* QUICK LINKS */
 .footer-links-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
-
   gap: var(--space-2xs) var(--space-sm); /* ✅ tighter + controlled */
   margin-top: var(--space-2xs);
-}
-
-
-/* CONTACT LINKS */
-.footer-col a[href^="tel"],
-.footer-col a[href^="mailto"],
-.footer-col a[href*="wa.me"] {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
 }
 
 /* ADDRESS */
@@ -141,11 +99,9 @@ grid-template-columns: 1.1fr 1.1fr 1.2fr 1.2fr;
     gap: var(--space-sm);
     padding: var(--space-md);
   }
-
   .footer-col {
     padding: var(--space-sm);
   }
-
   .footer-col a {
     justify-content: center;
   }

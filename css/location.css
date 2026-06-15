@@ -1,128 +1,208 @@
 /* =========================
-   LOCATION SECTION
+   Layout
 ========================= */
-
 .location-section {
-  padding: 80px 0;
+  padding: var(--space-2xl) 0 var(--space-lg);
 }
 
-/* ✅ shared width control */
 .section-inner {
-  max-width: 950px;
+  max-width: var(--content-narrow);
   margin: 0 auto;
 }
 
-/* =========================
-   TOP LAYOUT
-========================= */
+.section-heading {
+  margin-bottom: var(--space-xs);
+}
+
+.location-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
 
 .location-top {
-  display: flex;
-  align-items: stretch;
-  gap: 40px;
-  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
 }
 
 /* =========================
-   LOCATION CARD (PREMIUM)
+   Card
 ========================= */
-
-.location-text {
-  flex: 1;
-}
-
 .location-card {
-  background: rgba(10, 20, 25, 0.6);
-  border-radius: 16px;
-  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 
-  border: 1px solid rgba(0,255,255,0.15);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
 
-  backdrop-filter: blur(10px);
+  background: var(--overlay-subtle);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(var(--blur-md));
 
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.08),
-    0 0 60px rgba(0,255,255,0.05);
-}
-
-.location-card h3 {
-  margin-bottom: 5px;
-  font-size: 18px;
-}
-
-.location-card p {
-  margin-bottom: 8px;
-}
-
-.muted {
-  opacity: 0.7;
-  font-size: 14px;
+  line-height: var(--leading-normal);
 }
 
 /* =========================
-   CONTACT LINKS
+   Address
 ========================= */
+.address-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-2xs);
+}
 
+.address-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  letter-spacing: var(--tracking-normal);
+}
+
+.address-sub {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  opacity: var(--opacity-medium);
+}
+
+/* =========================
+   Copy Button
+========================= */
+.copy-btn {
+  align-self: flex-start;
+
+  margin-top: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  font-size: var(--text-xs);
+  opacity: var(--opacity-low);
+
+  transition: var(--transition-fast);
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  color: var(--cyan);
+}
+
+/* =========================
+   Description
+========================= */
+.location-card p.muted {
+  margin: 0;
+  font-size: var(--text-sm);
+  opacity: var(--opacity-medium);
+}
+
+/* =========================
+   Meta
+========================= */
+.location-meta {
+  display: flex;
+  gap: var(--space-sm);
+
+  font-size: var(--text-sm);
+  opacity: var(--opacity-medium);
+}
+
+.location-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  opacity: var(--opacity-high);
+}
+
+/* =========================
+   Contact Buttons
+========================= */
 .contact-links {
-  margin-top: 15px;
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 .contact-links a {
-  display: inline-block;
-  margin: 5px 10px 5px 0;
-  padding: 6px 10px;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
 
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 14px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
 
-  color: #dfefff;
-  background: rgba(0,255,255,0.08);
+  border: 1px solid var(--line-strong);
+  background: var(--overlay-soft);
+  box-shadow: var(--shadow-sm);
 
-  transition: 0.25s ease;
+  transition: var(--transition-fast);
+}
+
+.contact-links a:nth-child(2) {
+  background: rgba(98, 255, 183, 0.15);
+  border-color: var(--green);
 }
 
 .contact-links a:hover {
-  background: rgba(0,255,255,0.25);
-  color: #00f0ff;
+  background: var(--grad-accent);
+  color: var(--ink);
+  border-color: transparent;
+
+  transform: translateY(calc(var(--motion-shift-sm) * -1));
+  box-shadow: var(--shadow-md), var(--glow-green-sm);
 }
 
 /* =========================
-   PRIMARY BUTTON
+   Primary CTA
 ========================= */
-
 .primary-btn {
-  display: inline-block;
-  margin-top: 15px;
+  width: 100%;
+  margin-top: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
 
-  padding: 12px 22px;
-  border-radius: 30px;
+  border-radius: var(--radius-lg);
+  background: var(--grad-accent);
+  color: var(--ink);
 
-  background: linear-gradient(135deg, #00f0ff, #00c8d6);
-  color: #000;
+  font-weight: var(--weight-semibold);
+  text-align: center;
 
-  font-weight: 600;
-  text-decoration: none;
-
-  box-shadow:
-    0 0 15px rgba(0,255,255,0.5);
-
-  transition: 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
 }
 
 .primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 0 30px rgba(0,255,255,0.9);
+  transform: translateY(calc(var(--motion-shift-sm) * -1));
+  box-shadow: var(--shadow-lg), var(--glow-green-sm);
 }
 
 /* =========================
-   IMAGE
+   Image
 ========================= */
-
 .location-image {
-  flex: 1;
   position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.location-image::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  opacity: var(--opacity-medium);
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--bg-grad-1),
+    transparent 60%
+  );
 }
 
 .location-image img {
@@ -130,114 +210,72 @@
   height: 100%;
   object-fit: cover;
 
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
 
-  filter: brightness(0.8) contrast(1.05);
-
-  box-shadow:
-    0 0 20px rgba(0, 240, 255, 0.2),
-    0 0 60px rgba(0, 240, 255, 0.08);
-
-  transition: 0.4s ease;
+  transform: scale(1.02);
 }
 
-.location-image img:hover {
-  filter: brightness(0.95);
-}
-
-/* subtle overlay */
 .location-image::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 16px;
 
   background: linear-gradient(
-    to bottom right,
-    rgba(0, 10, 15, 0.2),
-    rgba(0, 0, 0, 0.6)
+    135deg,
+    var(--overlay-soft),
+    var(--overlay-dark)
   );
 }
 
 /* =========================
-   MAP (FIXED — NO MORE ISSUES)
+   Map
 ========================= */
-
 .location-map {
-  width: 100%;
-  margin-top: 50px;
+  position: relative;
+  overflow: hidden;
+
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+
+  backdrop-filter: blur(var(--blur-md));
+  background: radial-gradient(
+    circle at center,
+    var(--bg-grad-1),
+    transparent 70%
+  );
 }
 
-/* map card style */
 .location-map iframe {
   width: 100%;
-  height: 360px;
-
+  height: 300px;
   border: none;
-  border-radius: 16px;
+}
 
-  /* softer style */
-  filter: grayscale(70%) brightness(0.85);
+.location-map .map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.1);
+  width: var(--space-sm);
+  height: var(--space-sm);
+
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-pill);
+  background: var(--cyan);
+
+  z-index: 3;
 }
 
 /* =========================
-   MOBILE
+   Responsive
 ========================= */
-
-@media (max-width: 768px) {
-
+@media (max-width: var(--bp-md)) {
   .location-top {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
-  .location-image img {
-    height: auto;
+  .location-map iframe {
+    height: 240px;
   }
-
-.location-map iframe {
-  width: 100%;
-  height: 380px;
-  border-radius: 16px;
-  border: none;
-
-  /* ✅ improved look */
-  filter: 
-    grayscale(40%) 
-    brightness(0.95) 
-    contrast(1.1);
-
-  transition: 0.4s ease;
-
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.15),
-    0 0 60px rgba(0,255,255,0.05);
-}
-}
-
-.location-map iframe:hover {
-  filter: 
-    grayscale(20%) 
-    brightness(1) 
-    contrast(1.15);
-
-  transform: scale(1.01);
-}
-.location-map {
-  margin-top: 50px;
-  position: relative;
-}
-
-.location-map::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-
-  box-shadow:
-    0 0 40px rgba(0,255,255,0.1);
-
-  pointer-events: none;
 }
