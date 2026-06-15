@@ -307,11 +307,30 @@ async function load(id, file) {
   document.getElementById(id).innerHTML = await res.text();
 }
 
-// load header/footer
+// ✅ SAFE loader (prevents GitHub 404 trigger)
+async function load(id, file) {
+  try {
+    const res = await fetch(`./${file}`);
+
+    // ❗ Important: only inject if real file exists
+    if (!res.ok) {
+      console.warn("Failed to load:", file);
+      return;
+    }
+
+    const html = await res.text();
+    document.getElementById(id).innerHTML = html;
+
+  } catch (err) {
+    console.warn("Error loading:", file, err);
+  }
+}
+
+// ✅ Load header + footer safely
 load("header", "components/header.html");
 load("footer", "components/footer.html");
 
-// load all sections into main
+// ✅ Load main sections (SAFE VERSION)
 async function loadMain() {
   const sections = [
     "hero",
@@ -329,11 +348,27 @@ async function loadMain() {
   let content = "";
 
   for (let s of sections) {
-    const res = await fetch(`components/${s}.html`);
-    content += await res.text();
+    try {
+      const res = await fetch(`./components/${s}.html`);
+
+      // ❗ Skip if file missing
+      if (!res.ok) {
+        console.warn("Missing section:", s);
+        continue;
+      }
+
+      content += await res.text();
+
+    } catch (err) {
+      console.warn("Error loading section:", s, err);
+    }
   }
 
-  document.getElementById("main").innerHTML = content;
+  const main = document.getElementById("main");
+  if (main) {
+    main.innerHTML = content;
+  }
 }
 
-loadMain();
+// ✅ Run AFTER page loads fully
+window.addEventListener("DOMContentLoaded", loadMain);
