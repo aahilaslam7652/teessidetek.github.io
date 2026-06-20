@@ -307,12 +307,6 @@ async function load(id, file) {
   document.getElementById(id).innerHTML = await res.text();
 }
 
-
-
-// ✅ Load header + footer safely
-load("header", "components/header.html");
-load("footer", "components/footer.html");
-
 // ✅ Load main sections (SAFE VERSION)
 async function loadMain() {
   const sections = [
@@ -328,29 +322,6 @@ async function loadMain() {
     "contact"
   ];
 
-  let content = "";
-
-  for (let s of sections) {
-    try {
-      const res = await fetch(`./components/${s}.html`);
-
-      // ❗ Skip if file missing
-      if (!res.ok) {
-        console.warn("Missing section:", s);
-        continue;
-      }
-
-      content += await res.text();
-
-    } catch (err) {
-      console.warn("Error loading section:", s, err);
-    }
-  }
-
-  const main = document.getElementById("main");
-  if (main) {
-    main.innerHTML = content;
-  }
 }
 
 window.addEventListener("DOMContentLoaded", loadMain);
