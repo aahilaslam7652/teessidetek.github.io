@@ -1,291 +1,337 @@
-/* =======================================================
-   HERO CONTAINER
-======================================================= */
-
+/* ====================== HERO BASE ====================== */
 .hero {
   position: relative;
-  display: grid;
-  align-items: start;
-  padding: 5rem 1rem 0.1rem;
-  overflow: visible;
-
-  isolation: isolate; /* ✅ keeps layers contained */
+  overflow: hidden;
+  padding: 5rem var(--space-md) 2rem;
 }
 
-/* =======================================================
-   SINGLE CLEAN TRANSITION (FIXED)
-   ✅ only ONE - no duplicates
-======================================================= */
+/* top-right glow */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%);
+  top: -200px;
+  right: -200px;
+  z-index: 0;
+}
 
+/* bottom-left glow */
 .hero::after {
   content: "";
   position: absolute;
-
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 100%;
-  height: 80px;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0,255,156,0.08),
-    rgba(0,255,156,0.02),
-    transparent 70%
-  );
-
-  filter: blur(25px);
-  opacity: 0.7;
-
-  pointer-events: none;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,255,200,0.08), transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  z-index: 0;
 }
-.hero-right::after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
 
-  width: 140%;
-  height: 160px;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0,255,156,0.08),
-    rgba(0,255,156,0.02),
-    transparent 70%
-  );
-
-  filter: blur(30px);
-  pointer-events: none;
-}
-/* =======================================================
-   LAYOUT
-======================================================= */
-
+/* ====================== LAYOUT ====================== */
 .hero-inner {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 60px;
-  align-items: center;
-
+  grid-template-columns: minmax(0, 600px) 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
-  z-index: 2; /* ✅ ALWAYS above canvas */
+  z-index: 1;
+  animation: fadeUp 0.8s ease forwards;
 }
 
-/* LEFT COLUMN */
+/* LEFT CONTENT */
 .hero-inner > div:first-child {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  max-width: 620px;
+  gap: 0.8rem;
 }
 
-.hero-right {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* ====================== TEXT ====================== */
+.section-title {
+  margin-bottom: 0.3rem;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
-
-/* =======================================================
-   TEXT
-======================================================= */
 
 .eyebrow {
-  color: var(--green);
-  font-size: 0.78rem;
-  font-weight: 900;
+  color: var(--color-accent-strong);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
+  margin-bottom: 0.3rem;
 }
 
-
-
-/* =======================================================
-   ACTIONS
-======================================================= */
-
+/* ====================== CTA ROW ====================== */
 .hero-actions {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
+  margin: 0.4rem 0;
+  flex-wrap: nowrap;
 }
 
-/* =======================================================
-   FEATURE CHIPS
-======================================================= */
-
-.hero-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.hero-features span {
-  padding: 8px 14px;
+/* ====================== BUTTONS ====================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.7rem;
   border-radius: 999px;
-  background: rgba(0,255,180,0.08);
-  border: 1px solid rgba(0,255,180,0.2);
-  font-size: 0.8rem;
-  color: #d8fff3;
+  font-weight: 700;
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: #002018;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  animation: glowPulse 3s ease-in-out infinite;
+  box-shadow: 0 6px 18px rgba(16,185,129,0.25);
 }
 
-/* =======================================================
-   STATS (FIXED GPU ISSUES)
-======================================================= */
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(16,185,129,0.45);
+}
 
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(16,185,129,0); }
+  50% { box-shadow: 0 0 20px rgba(16,185,129,0.4); }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent-strong);
+}
+
+/* ====================== CONTACT PILLS ====================== */
+.hero-contact-inline {
+  display: inline-flex;      /* ✅ shrink to content width */
+  flex-direction: column;
+  align-items: stretch;      /* ✅ equal width pills */
+  gap: 6px;
+  margin-left: 6px;
+
+  transform: translateY(-3px); /* ✅ better alignment */
+}
+
+.hero-contact-inline span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 40%;               /* ✅ same width */
+  min-width: max-content;    /* ✅ use longest item */
+
+  height: 36px;
+  padding: 0 16px;           /* ✅ better spacing */
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+
+  white-space: nowrap;
+
+  justify-content: flex-start; /* ✅ better visual balance */
+
+  transition: all 0.25s ease;
+}
+
+.hero-contact-inline span:hover {
+  border-color: var(--color-accent-strong);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16,185,129,0.25);
+}
+
+/* ====================== MICRO BADGES ====================== */
 .hero-stats {
   display: flex;
-  gap: 16px;
-  margin-top: 6px;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+  max-width: 420px;
 }
 
 .hero-stat {
-  flex: 1;
-  padding: 16px;
-  border-radius: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-  background: rgba(7,16,15,0.65);
-  border: 1px solid rgba(98,255,183,0.2);
+  width: 125px;
+  height: 50px;
 
+  padding: 0.3rem 0.5rem;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(6px);
 
-  transform: translateZ(0); /* ✅ FIX ghosting */
-  will-change: transform;
-
-  transition: 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .hero-stat:hover {
-  transform: translateY(-3px);
-  border-color: rgba(98,255,183,0.4);
-  box-shadow: 0 0 30px rgba(98,255,183,0.15);
+  transform: translateY(-2px);
+  border-color: var(--color-accent-strong);
+  box-shadow: 0 6px 18px rgba(16,185,129,0.25);
 }
 
 .hero-stat strong {
-  display: block;
-  font-size: var(--text-lg);
-  color: var(--green);
+  font-size: 0.85rem;
+  color: var(--color-accent-strong);
+  line-height: 1;
 }
 
 .hero-stat span {
-  font-size: var(--text-sm);
-  color: #d8fff3;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.1;
 }
 
-/* =======================================================
-   TAGS / LOCATION
-======================================================= */
-
-.hero-location {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.6);
-}
-
-.hero-tags {
+/* ====================== RIGHT SIDE ====================== */
+.hero-right {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 40px;
 }
-
-.hero-tags span {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.08);
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.8);
-}
-
-/* =======================================================
-   PC IMAGE
-======================================================= */
 
 .hero-pc {
-  max-width: 420px;
-  width: 70%;
-  margin-left: auto;
-
-
-  pointer-events: none;
-
-  transform: translateZ(0); /* ✅ FIX ghosting duplication */
-}
-
-
-
-
-
-
-/* =======================================================
-   REVIEWS (FIXED GPU BUG)
-======================================================= */
-
-.hero-reviews {
-  position: absolute;
-  top: 48%;
-  left: -60px;
-  transform: translateY(-50%);
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-
+  max-width: 380px;
+  width: 100%;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6));
+  transition: transform 0.6s ease;
+  transform: translateX(-90px);
   z-index: 2;
 }
 
+/* ====================== REVIEW STACK ====================== */
+.hero-reviews {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 14px;
+  z-index: 3;
+  right: 20px;
+}
+
 .hero-reviews-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  background: rgba(10, 25, 20, 0.6); /* ✅ darker green-tinted base */
+  border: 1px solid rgba(16,185,129,0.25); /* ✅ green border */
+  color: rgba(220,255,240,0.9); /* ✅ softer green-white instead of plain white */
+  font-size: 0.9rem;
+  line-height: 1.4;
 
-  padding: 12px;
-  border-radius: 12px;
-
-  background: rgba(0,30,25,0.9);
-  border: 1px solid rgba(0,255,180,0.25);
+  width: 110px;
+  padding: 6px;
+  border-radius: 14px;
 
   backdrop-filter: blur(10px);
 
-  transform: translateZ(0); /* ✅ FIX ghosting */
-  will-change: transform;
+  /* ✅ subtle green glow */
+  box-shadow: 
+    inset 0 0 10px rgba(16,185,129,0.1),
+    0 6px 18px rgba(0,0,0,0.4);
 
-  color: #ffffff;
-  box-shadow: 0 0 25px rgba(0,255,180,0.12);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  animation: floatCard 6s ease-in-out infinite;
+}
 
-  transition: 0.25s ease;
+.hero-reviews-item:nth-child(2) { animation-delay: 1s; }
+.hero-reviews-item:nth-child(3) { animation-delay: 2s; }
+.hero-reviews-item:nth-child(4) { animation-delay: 3s; }
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .hero-reviews-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 35px rgba(0,255,180,0.25);
+  border-color: var(--color-accent-strong);
+  box-shadow: 
+    inset 0 0 14px rgba(16,185,129,0.2),
+    0 10px 25px rgba(16,185,129,0.25);
 }
 
-/* =======================================================
-   REVIEW TEXT
-======================================================= */
-
-.hero-reviews-top {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  font-size: 0.75rem;
-  color: #cffff3;
+/* ====================== ANIMATIONS ====================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
 }
 
-.hero-reviews-top i {
-  color: #00ffb4;
-}
+/* ====================== RESPONSIVE ====================== */
+@media (max-width: 950px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-.hero-reviews-rating {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.9rem;
-  color: #00ffb4;
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-contact-inline {
+    align-items: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-reviews {
+    position: static;
+    transform: none;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+  }
+
+  .hero-reviews-item {
+    animation: none;
+    transform: none;
+  }
+
+  .hero-pc {
+    margin-top: 20px;
+  }
+
+  .hero-right {
+    justify-content: center;
+    padding-left: 0;
+  }
+}
+.hero-reviews-item strong,
+.hero-reviews-item span:first-of-type {
+  color: #34d399; /* ✅ your green accent */
   font-weight: 700;
 }
-
-.hero-reviews-meta {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.7);
+.hero-reviews-item span:last-of-type {
+  color: rgba(200,255,230,0.6); /* ✅ subtle secondary text */
 }

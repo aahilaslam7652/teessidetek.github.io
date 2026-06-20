@@ -1,101 +1,137 @@
-/* FAQ SECTION */
 .faq-section {
-  text-align: left;
+  position: relative;
 }
 
-/* LAYOUT */
-.faq-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-sm);
-  max-width: var(--max);
-}
-
-/* ITEM */
 .faq-item {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(8px);
-
-  transition: var(--transition-fast);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-base);
 }
+
 .faq-item:hover {
-  border-color: var(--line-strong);
-  box-shadow: var(--glow-sm);
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
 }
 
-/* QUESTION */
+.faq-item.active {
+  background: var(--overlay-subtle);
+  border-color: var(--border-strong);
+}
+
 .faq-question {
   width: 100%;
-  padding: var(--space-sm);
-  margin: 0; /* ✅ ensure no inherited spacing */
-  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0;
+  margin: 0;
+  background: transparent;
   border: none;
   color: var(--text-primary);
   font-size: var(--text-base);
   font-weight: var(--weight-semibold);
-  line-height: var(--leading-tight); /* ✅ tighter heading */
-  text-align: left;
+  line-height: var(--leading-tight);
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-/* ICON */
 .faq-icon {
-  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--text-tertiary);
   transition: var(--transition-base);
-
-  color: var(--text-tertiary);
-  font-size: var(--text-base);
-}
-.faq-item.active .faq-icon {
-  transform: rotate(45deg);
-  color: var(--cyan);
 }
 
-/* ANSWER */
+.faq-icon::before {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.faq-icon::after {
+  height: 100%;
+  width: 2px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.faq-item.active .faq-icon::after {
+  transform: translateX(-50%) scaleY(0);
+}
+
+.faq-item.active .faq-icon::before {
+  background: var(--color-accent-strong);
+}
+
 .faq-answer {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: var(--transition-base);
+}
+
+.faq-answer-inner {
   overflow: hidden;
-  padding: 0 var(--space-sm);
-  margin: 0; /* ✅ kill any stray spacing */
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: var(--transition-base);
+}
+
+.faq-answer p {
+  margin-top: var(--space-2xs);
+  color: var(--text-secondary);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  color: var(--text-secondary);
-  opacity: 0;
-  transform: translateY(calc(var(--space-2xs) * -1));
-  transition: var(--transition-base);
 }
 
-/* ✅ CRITICAL: remove default paragraph gaps */
-.faq-answer p {
-  margin: 0;
-}
-
-/* ACTIVE */
 .faq-item.active .faq-answer {
-  max-height: 200px;
-  /* ✅ tighter top spacing (this was your gap) */
-  padding: var(--space-2xs) var(--space-sm) var(--space-sm);
-  opacity: var(--opacity-high);
+  grid-template-rows: 1fr;
+}
+
+.faq-item.active .faq-answer-inner {
+  opacity: 1;
   transform: translateY(0);
 }
 
-.faq-item.active {
-  border-color: var(--line-strong);
-  box-shadow:
-    0 0 16px rgba(98,255,183,0.12),
-    0 0 30px rgba(98,255,183,0.05);
+.faq-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(64, 233, 255, 0.08),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: var(--transition-base);
+  pointer-events: none;
 }
 
-/* MOBILE */
+.faq-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.faq-item:hover::after {
+  opacity: 1;
+}
+
 @media (max-width: 768px) {
-  .faq-list {
-    grid-template-columns: 1fr;
-  }
   .faq-question {
     font-size: var(--text-sm);
   }

@@ -1,145 +1,138 @@
-
-#pricing {
-  padding-bottom: 80px;
+/* ========================
+   GRID
+======================== */
+.price-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:var(--space-lg)
 }
 
-
-/* GRID */
-
-.price-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  align-content: start;   /* ✅ THE FIX */
+.pricing-grid{
+margin-bottom:var(--space-lg)
 }
 
+/* ========================
+   CARD
+======================== */
+.price-card{
+position:relative;
+display:flex;
+flex-direction:column;
+gap:var(--space-sm);
 
-.pricing-grid {
-  margin-bottom: 20px; /* ✅ ensures space before next section */
+padding:var(--space-lg);
+border-radius:var(--radius-lg);
+
+background:var(--surface);
+border:1px solid var(--border-subtle);
+
+backdrop-filter:var(--glass-blur);
+
+transition:var(--transition-base)
 }
 
-/* CARD */
-
-.price-card {
-  background: rgba(10, 20, 18, 0.6);
-  border: 1px solid rgba(0,255,156,0.15);
-  border-radius: 12px;
-
-  padding: 20px;
-
-  text-align: left;
-  position: relative;
-
-  transition: all 0.25s ease;
-}
-
-/* subtle glow layer */
-
-.price-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at top,
-    rgba(0,255,156,0.08),
-    transparent 70%
-  );
-
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* glow layer */
+.price-card::after{
+content:"";
+position:absolute;
+inset:0;
+background:var(--gradient-glow-accent);
+opacity:0;
+transition:opacity var(--transition-fast)
 }
 
 /* hover */
-
-.price-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0,255,156,0.4);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.price-card:hover{
+transform:translateY(-4px);
+border-color:var(--border-accent);
+box-shadow:var(--shadow-md)
 }
 
-.price-card:hover::after {
-  opacity: 1;
+.price-card:hover::after{
+opacity:1
 }
 
-/* TEXT */
-
-
-
-
-
-
-
-
-
-/* price list layout */
-
-.price-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* featured */
+.price-card.featured{
+border-color:var(--border-accent);
+box-shadow:var(--glow-soft)
 }
 
-.price-list li {
-  display: flex;
-  justify-content: space-between;
-
-  padding: 8px 0;
-  font-size: 0.95rem;
-
-
+/* ========================
+   PRICE LIST
+======================== */
+.price-list{
+list-style:none;
+padding:0;
+margin:0;
+display:flex;
+flex-direction:column;
+gap:var(--space-xs)
 }
 
-
-/* left text */
-.price-list span:first-child {
-  opacity: 0.8;
+.price-list li{
+display:flex;
+justify-content:space-between;
+font-size:var(--text-sm)
 }
 
-/* price */
-.price-list span:last-child {
-  color: #00ff9c;
-  font-weight: 500;
+/* label */
+.price-list span:first-child{
+opacity:.8
 }
 
-.price-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 14px;
-
-  border-radius: 6px;
-  font-size: 0.85rem;
-
-  background: rgba(0,255,156,0.1);
-  border: 1px solid rgba(0,255,156,0.3);
-  color: #bfffe3;
-
-  text-decoration: none;
-  transition: all 0.25s ease;
+/* value */
+.price-list span:last-child{
+color:var(--color-accent-strong);
+font-weight:var(--weight-medium)
 }
 
-.price-card.featured {
-  border-color: #00ff9c;
-  box-shadow: 0 0 20px rgba(0,255,156,0.2);
+/* ========================
+   BUTTON
+======================== */
+.price-btn{
+display:inline-block;
+margin-top:var(--space-md);
+padding:var(--space-xs) var(--space-md);
+
+border-radius:var(--radius-md);
+font-size:var(--text-sm);
+
+background:var(--overlay-accent);
+border:1px solid var(--border-accent);
+color:var(--color-accent-strong);
+
+text-decoration:none;
+transition:var(--transition-fast);
+
+position:relative;
+z-index:2
 }
 
-@media (max-width: 900px) {
-  .price-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 500px) {
-  .price-grid {
-    grid-template-columns: 1fr;
-  }
+.price-btn:hover{
+transform:translateY(-2px);
+background:var(--overlay-accent-strong);
+box-shadow:var(--glow-soft)
 }
 
-
-.price-card {
-  position: relative;
+/* ========================
+   SECTION FIX
+======================== */
+#pricing{
+overflow:hidden
 }
 
-.price-btn {
-  position: relative;
-  z-index: 10;   /* brings button ABOVE everything */
+/* ========================
+   RESPONSIVE
+======================== */
+@media (max-width:900px){
+.price-grid{
+grid-template-columns:repeat(2,1fr)
+}
+}
+
+@media (max-width:500px){
+.price-grid{
+grid-template-columns:1fr
+}
 }

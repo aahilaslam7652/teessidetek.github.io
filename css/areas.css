@@ -1,189 +1,56 @@
-/* ========================
-   AREAS SECTION
-======================== */
-.areas-section {
-  padding-bottom: var(--space-md);
+.areas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+
+.area-card{
+position:relative;
+padding:var(--space-xs);
+text-align:center;
+border-radius:var(--radius-md);
+background:var(--overlay-subtle);
+backdrop-filter:var(--glass-blur);
+border:1px solid var(--border-subtle);
+color:var(--color-text);
+text-decoration:none;
+font-weight:var(--weight-medium);
+letter-spacing:.02em;
+transition:transform var(--transition-fast),box-shadow var(--transition-fast),border-color var(--transition-fast),background var(--transition-fast);
+opacity:0;
+animation:fadeUp .4s ease forwards
 }
 
-
-/* ========================
-   AREAS GRID
-======================== */
-.areas-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
+.area-card:hover{
+transform:translateY(-4px) scale(1.02);
+border-color:var(--border-accent);
+background:var(--overlay-accent);
+box-shadow:var(--glow-soft)
 }
 
-
-/* ========================
-   AREA CARD (BASE)
-======================== */
-.area-card {
-  position: relative;
-
-  padding: var(--space-xs);
-  text-align: center;
-  border-radius: var(--radius-lg);
-
-  background: var(--overlay-subtle);
-  backdrop-filter: blur(var(--blur-sm));
-
-  border: 1px solid var(--overlay-soft);
-
-  color: var(--text-primary);
-  text-decoration: none;
-
-  font-weight: var(--weight-medium, 500);
-  letter-spacing: var(--tracking-normal);
-
-  cursor: pointer;
-
-  transition:
-    transform var(--transition-fast),
-    box-shadow var(--transition-fast),
-    border-color var(--transition-fast),
-    background var(--transition-fast),
-    color var(--transition-fast);
-
-  /* Entry animation default state */
-  
-  transform: translateY(var(--motion-shift-sm));
-  animation: fadeUp var(--transition-slow) ease forwards;
+.area-card:last-child{
+font-weight:var(--weight-semibold);
+background:var(--overlay-accent)
 }
 
-
-/* ========================
-   GLOW BORDER EFFECT
-======================== */
-.area-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(98,255,183,0.4),
-    transparent
-  );
-
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  opacity: 0;
-  transition: opacity var(--transition-fast);
+.area-card:last-child:hover{
+background:var(--overlay-accent-strong)
 }
 
-
-
-
-
-/* ========================
-   HOVER STATE
-======================== */
-.area-card:hover {
-  transform: translateY(calc(var(--motion-shift-sm) * -2)) scale(1.015);
-
-  border-color: var(--line-strong);
-  background: rgba(98,255,183,0.06); /* fallback (no token available) */
-
-  color: var(--text-primary);
-
-  box-shadow:
-    var(--shadow-sm),
-    var(--glow-green-sm);
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
 }
 
-.area-card:hover::before {
-  opacity: 1;
+.area-card:nth-child(1){animation-delay:.05s}
+.area-card:nth-child(2){animation-delay:.1s}
+.area-card:nth-child(3){animation-delay:.15s}
+.area-card:nth-child(4){animation-delay:.2s}
+.area-card:nth-child(5){animation-delay:.25s}
+.area-card:nth-child(6){animation-delay:.3s}
+
+@media(max-width:1100px){
+.areas-grid{grid-template-columns:repeat(3,1fr)}
 }
-
-.area-card:hover::after {
-  transform: translateX(var(--space-xs));
-  opacity: var(--opacity-high);
+@media(max-width:800px){
+.areas-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-
-/* ========================
-   ACTIVE STATE
-======================== */
-.area-card:active {
-  transform: translateY(calc(var(--motion-shift-sm) * -0.5)) scale(0.99);
-  box-shadow: var(--shadow-sm);
-}
-
-
-/* ========================
-   ENTRY ANIMATION DELAYS
-======================== */
-.area-card:nth-child(1) { animation-delay: 0.05s; }
-.area-card:nth-child(2) { animation-delay: 0.1s; }
-.area-card:nth-child(3) { animation-delay: 0.15s; }
-.area-card:nth-child(4) { animation-delay: 0.2s; }
-.area-card:nth-child(5) { animation-delay: 0.25s; }
-.area-card:nth-child(6) { animation-delay: 0.3s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* ========================
-   RESPONSIVE GRID
-======================== */
-@media (max-width: 1100px) {
-  .areas-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .areas-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .areas-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* ========================
-   FINAL CARD (CTA)
-======================== */
-.area-card:last-child {
-  font-weight: var(--weight-semibold);
-  background: rgba(98,255,183,0.08); /* fallback */
-  border-color: var(--line-strong);
-}
-
-.area-card:last-child:hover {
-  background: rgba(98,255,183,0.15); /* fallback */
-}
-
-
-/* ========================
-   INTRO TEXT
-======================== */
-.areas-intro {
-  max-width: 560px;
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-md);
-  line-height: var(--leading-normal);
-
-  color: var(--text-secondary);
-
-  margin-bottom: var(--space-2sx);
+@media(max-width:500px){
+.areas-grid{grid-template-columns:1fr}
 }

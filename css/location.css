@@ -1,278 +1,202 @@
-/* =========================
-   Layout
-========================= */
-.location-section {
-  padding: var(--space-2xl) 0 var(--space-lg);
-}
-
-.section-inner {
-  max-width: var(--content-narrow);
-  margin: 0 auto;
-}
-
-.section-heading {
-  margin-bottom: var(--space-xs);
-}
-
-.location-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.location-top {
+.location-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-  margin-top: var(--space-xs);
+  gap: var(--space-lg);
+  align-items: stretch;
 }
 
-/* =========================
-   Card
-========================= */
+.location-grid > * {
+  min-width: 0;
+}
+
+.location-map-full {
+  grid-column: 1 / -1;
+}
+
 .location-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-
-  padding: var(--space-md);
-  border-radius: var(--radius-lg);
-
-  background: var(--overlay-subtle);
-  border: 1px solid var(--line);
-  backdrop-filter: blur(var(--blur-md));
-
-  line-height: var(--leading-normal);
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  color: var(--text-primary);
+  height: 100%;
+  position: relative;
 }
 
-/* =========================
-   Address
-========================= */
-.address-block {
+.location-card.glass {
+  box-shadow: 0 0 0 1px var(--overlay-soft), var(--shadow-md);
+}
+
+.location-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: var(--shadow-glow);
+}
+
+.location-card-top {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: var(--space-lg);
+}
+
+.location-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  height: 100%;
+}
+
+.location-card-images {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.location-card-image {
+  flex: 1;
+}
+
+.location-card-image img,
+.location-bottom-image img,
+.location-image img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7) contrast(1.05);
+  transition: var(--transition-base);
+}
+
+.location-card-image img {
+  height: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.location-address-block {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xs);
-  margin-bottom: var(--space-2xs);
 }
 
-.address-main {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-
+.location-address-main {
   font-size: var(--text-base);
   font-weight: var(--weight-semibold);
-  color: var(--text-primary);
-  letter-spacing: var(--tracking-normal);
 }
 
-.address-sub {
+.location-card p {
   font-size: var(--text-sm);
-  color: var(--text-primary);
-  opacity: var(--opacity-medium);
+  opacity: 0.75;
 }
 
-/* =========================
-   Copy Button
-========================= */
-.copy-btn {
-  align-self: flex-start;
-
-  margin-top: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  font-size: var(--text-xs);
-  opacity: var(--opacity-low);
-
-  transition: var(--transition-fast);
-}
-
-.copy-btn:hover {
-  opacity: 1;
-  color: var(--cyan);
-}
-
-/* =========================
-   Description
-========================= */
-.location-card p.muted {
-  margin: 0;
-  font-size: var(--text-sm);
-  opacity: var(--opacity-medium);
-}
-
-/* =========================
-   Meta
-========================= */
 .location-meta {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-sm);
-
   font-size: var(--text-sm);
-  opacity: var(--opacity-medium);
+  opacity: 0.85;
 }
 
 .location-meta span {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
-  opacity: var(--opacity-high);
+  gap: var(--space-xs);
 }
 
-/* =========================
-   Contact Buttons
-========================= */
-.contact-links {
+.location-actions {
   display: flex;
-  gap: var(--space-sm);
-  margin-top: var(--space-xs);
+  gap: var(--space-xs);
+  margin-top: auto;
 }
 
-.contact-links a {
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-md);
-
+.location-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-md);
+  border-radius: 999px;
   font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-medium);
+  border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-
-  border: 1px solid var(--line-strong);
-  background: var(--overlay-soft);
-  box-shadow: var(--shadow-sm);
-
-  transition: var(--transition-fast);
-}
-
-.contact-links a:nth-child(2) {
-  background: rgba(98, 255, 183, 0.15);
-  border-color: var(--green);
-}
-
-.contact-links a:hover {
-  background: var(--grad-accent);
-  color: var(--ink);
-  border-color: transparent;
-
-  transform: translateY(calc(var(--motion-shift-sm) * -1));
-  box-shadow: var(--shadow-md), var(--glow-green-sm);
-}
-
-/* =========================
-   Primary CTA
-========================= */
-.primary-btn {
-  width: 100%;
-  margin-top: var(--space-xs);
-  padding: var(--space-sm) var(--space-md);
-
-  border-radius: var(--radius-lg);
-  background: var(--grad-accent);
-  color: var(--ink);
-
-  font-weight: var(--weight-semibold);
-  text-align: center;
-
-  box-shadow: var(--shadow-sm);
+  background: var(--overlay-subtle);
   transition: var(--transition-base);
 }
 
-.primary-btn:hover {
-  transform: translateY(calc(var(--motion-shift-sm) * -1));
-  box-shadow: var(--shadow-lg), var(--glow-green-sm);
+.location-actions a:nth-child(2) {
+  border-color: var(--color-accent-strong);
+  color: var(--color-accent-strong);
 }
 
-/* =========================
-   Image
-========================= */
-.location-image {
-  position: relative;
-  overflow: hidden;
+.location-actions a:hover {
+  background: rgba(64, 233, 255, 0.15);
+  border-color: var(--color-accent);
+}
+
+.location-primary-btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-xl);
   border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
+  color: var(--bg);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  margin-top: var(--space-xs);
 }
 
-.location-image::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  opacity: var(--opacity-medium);
+.location-primary-btn:hover {
+  transform: translateY(-2px);
+}
 
-  background: radial-gradient(
-    circle at 30% 30%,
-    var(--bg-grad-1),
-    transparent 60%
-  );
+.location-image {
+  height: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
 }
 
 .location-image img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
-
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-
-  transform: scale(1.02);
 }
 
-.location-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    135deg,
-    var(--overlay-soft),
-    var(--overlay-dark)
-  );
-}
-
-/* =========================
-   Map
-========================= */
 .location-map {
-  position: relative;
+  border-radius: var(--radius-xl);
   overflow: hidden;
-
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-
-  backdrop-filter: blur(var(--blur-md));
-  background: radial-gradient(
-    circle at center,
-    var(--bg-grad-1),
-    transparent 70%
-  );
 }
 
 .location-map iframe {
   width: 100%;
-  height: 300px;
+  height: 320px;
   border: none;
+  display: block;
 }
 
-.location-map .map-pin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  width: var(--space-sm);
-  height: var(--space-sm);
-
-  transform: translate(-50%, -50%);
-  border-radius: var(--radius-pill);
-  background: var(--cyan);
-
-  z-index: 3;
+.location-bottom-image {
+  margin-top: auto;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
-/* =========================
-   Responsive
-========================= */
-@media (max-width: var(--bp-md)) {
-  .location-top {
+.location-bottom-image img {
+  height: 120px;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 768px) {
+  .location-grid {
     grid-template-columns: 1fr;
+  }
+
+  .location-card-top {
+    grid-template-columns: 1fr;
+  }
+
+  .location-card-images {
+    flex-direction: row;
   }
 
   .location-map iframe {
