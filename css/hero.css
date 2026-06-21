@@ -57,11 +57,13 @@
 }
 
 .eyebrow {
-  color: var(--color-accent-strong);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 18px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
+  color: #a0f5e6;
+  transform:translate(0px,-10px);
 }
 
 /* ====================== CTA ROW ====================== */

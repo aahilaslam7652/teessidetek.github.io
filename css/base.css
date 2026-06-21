@@ -146,6 +146,7 @@
 ======================== */
 --transition-fast: 0.15s ease;
 --transition-base: 0.25s ease;
+--marquee-speed: 30s;
 
 /* ✅ NEW ANIMATION CURVES */
 --animate-in: cubic-bezier(0.2, 0.8, 0.2, 1);
