@@ -3,9 +3,7 @@
   position: relative;
   overflow: hidden;
   padding: 5rem var(--space-md) 2rem;
-
-
-
+  padding-top: var(--space-2xs);
 }
 
 /* top-right glow */
