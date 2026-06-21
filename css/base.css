@@ -14,6 +14,10 @@
 --surface: rgba(12, 22, 21, 0.92);
 --surface-strong: #13211f;
 
+/* ✅ NEW */
+--surface-glass: var(--glass-bg);
+--surface-elevated: rgba(12, 22, 21, 0.96);
+
 /* ========================
    GLASS SYSTEM
 ======================== */
@@ -56,7 +60,7 @@
 --color-accent-strong: #62ffb7;
 
 /* ========================
-   GRADIENT SYSTEM (NEW)
+   GRADIENT SYSTEM
 ======================== */
 --gradient-line-accent: linear-gradient(
   90deg,
@@ -72,7 +76,7 @@
 );
 
 /* ========================
-   ICON GLOW SYSTEM (NEW)
+   ICON GLOW SYSTEM
 ======================== */
 --icon-glow-soft: drop-shadow(0 0 6px var(--overlay-accent));
 --icon-glow-strong: drop-shadow(0 0 12px var(--color-accent-strong));
@@ -116,6 +120,14 @@
 --radius-xl: 22px;
 
 /* ========================
+   ✅ COMPONENT TOKENS
+======================== */
+--pill-radius: 999px;
+--pill-padding: var(--space-xs) var(--space-sm);
+--btn-radius: var(--radius-xl);
+--btn-padding: var(--space-xs) var(--space-md);
+
+/* ========================
    SHADOWS
 ======================== */
 --shadow-sm: 0 4px 12px rgba(0,0,0,0.2);
@@ -124,14 +136,47 @@
 
 --glow-soft: 0 0 20px rgba(98,255,183,0.25);
 
+/* ✅ ELEVATION SYSTEM */
+--elevation-1: var(--shadow-sm);
+--elevation-2: var(--shadow-md);
+--elevation-3: var(--shadow-glow);
+
 /* ========================
    MOTION
 ======================== */
 --transition-fast: 0.15s ease;
 --transition-base: 0.25s ease;
 
-/* NEW reusable animation control */
---marquee-speed: 32s;
+/* ✅ NEW ANIMATION CURVES */
+--animate-in: cubic-bezier(0.2, 0.8, 0.2, 1);
+--animate-out: ease-in;
+
+/* ========================
+   ✅ INTERACTION STATES
+======================== */
+--state-hover-bright: 1.05;
+--state-hover-lift: translateY(-2px);
+--state-press-scale: 0.97;
+
+/* ========================
+   ✅ ACCESSIBILITY
+======================== */
+--focus-ring: 2px solid var(--color-accent-strong);
+
+/* ========================
+   ✅ TAP TARGET
+======================== */
+--tap-size: 48px;
+
+/* ========================
+   ✅ Z-INDEX SYSTEM
+======================== */
+--z-base: 1;
+--z-overlay: 10;
+--z-header: 100;
+--z-modal: 1000;
+--z-toast: 2000;
+--z-floating: 3000;
 
 /* ========================
    LAYOUT
@@ -254,7 +299,7 @@ footer { margin-top: auto; }
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--elevation-2);
   display: flex;
   flex-direction: column;
 }
@@ -268,8 +313,8 @@ footer { margin-top: auto; }
 .glow { box-shadow: var(--shadow-glow); }
 
 .pill {
-  border-radius: 999px;
-  padding: var(--space-2xs) var(--space-md);
+  border-radius: var(--pill-radius);
+  padding: var(--pill-padding);
 }
 
 
@@ -296,7 +341,7 @@ input:focus, textarea:focus {
    ACCESSIBILITY
 ======================== */
 :focus-visible {
-  outline: 2px solid var(--color-accent-strong);
+  outline: var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -304,31 +349,14 @@ input:focus, textarea:focus {
 /* ========================
    GLOBAL ELEMENTS
 ======================== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  background: #25d366;
-  border-radius: 50%;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-}
-
 main, header, footer {
   position: relative;
-  z-index: 1;
+  z-index: var(--z-base);
 }
 
 .global-canvas {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
 }
