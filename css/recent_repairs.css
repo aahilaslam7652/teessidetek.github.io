@@ -1,0 +1,187 @@
+/* =========================
+   RECENT REPAIRS ELITE
+========================= */
+
+#recent-repairs {
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+
+/* =========================
+   SCROLL STRIP (FINAL FIX)
+========================= */
+
+#recent-repairs .repairs-scroll {
+  display: block;             /* ✅ break any flex/grid conflicts */
+  white-space: nowrap;        /* ✅ FORCE horizontal layout */
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 10px 30px;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================
+   CARDS (INLINE FIX)
+========================= */
+
+#recent-repairs .repair-card {
+  display: inline-block;      /* ✅ CRITICAL */
+  width: 320px;
+
+  margin-right: 20px;         /* replaces flex gap */
+
+  vertical-align: top;
+
+  border-radius: 14px;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, #0b1f1c, #071613);
+  border: 1px solid rgba(0,255,180,0.15);
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+/* Hover */
+#recent-repairs .repair-card:hover {
+  transform: translateY(-6px) scale(1.02);
+
+  border: 1px solid rgba(0,255,180,0.4);
+
+  box-shadow:
+    0 15px 35px rgba(0,255,180,0.12),
+    0 0 20px rgba(0,255,180,0.08);
+}
+
+/* IMAGE */
+#recent-repairs .repair-card img {
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover;
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+#recent-repairs .repair-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Prevent overlays blocking clicks */
+#recent-repairs .repair-card::after {
+  pointer-events: none;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+}
+
+/* LIGHTBOX IMAGE */
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 14px;
+
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.lightbox img.zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+/* CLOSE BUTTON */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  font-size: 40px;
+  color: #00f5c4;
+  cursor: pointer;
+}
+
+/* =========================
+   LIGHTBOX ARROWS
+========================= */
+
+.lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 40px;
+  color: #00f5c4;
+
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+}
+/* =========================
+   HIDE SCROLLBAR (FINAL)
+========================= */
+
+#recent-repairs .repairs-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+#recent-repairs .repairs-scroll::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+.lightbox-arrow.left { left: 20px; }
+.lightbox-arrow.right { right: 20px; }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  #recent-repairs .container {
+    max-width: 100%;
+  }
+
+  #recent-repairs .repair-card {
+    width: 220px;
+  }
+
+  #recent-repairs .repair-card img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  #recent-repairs .repair-card {
+    width: 200px;
+  }
+
+  #recent-repairs .repair-card img {
+    height: 150px;
+  }
+}
