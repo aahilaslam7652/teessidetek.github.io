@@ -1,13 +1,17 @@
 .site-header {
   position: sticky;
-  top: var you actually want a pseudo element, it needs content */  top: var(--space-sm);
-.site-header::after {
-  content: "";
-  position: sticky;
   top: var(--space-sm);
   z-index: var(--z-header);
+    margin-bottom: 1.2rem;
 }
 
+/* Optional pseudo element (only if you actually need it visually) */
+.site-header::after {
+  content: "";
+  display: block;
+}
+
+/* INNER LAYOUT */
 .site-header-inner {
   max-width: var(--max);
   margin: 0 auto;
@@ -28,27 +32,33 @@
   box-shadow: var(--shadow-md);
 }
 
-/* scroll */
+/* Scroll state */
 .site-header.is-scrolled .site-header-inner {
   background: var(--surface);
   box-shadow: var(--glow-soft);
 }
 
-/* BRAND */
+/* =======================
+   BRAND
+======================= */
 .brand {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
 }
 
-.brand-logo { height: 40px; }
+.brand-logo {
+  height: 40px;
+}
 
 .brand strong {
   font-size: var(--text-base);
   color: var(--text-primary);
 }
 
-/* NAV */
+/* =======================
+   NAV (DESKTOP)
+======================= */
 .site-nav {
   display: flex;
   justify-content: center;
@@ -63,7 +73,7 @@
   transition: color var(--transition-fast);
 }
 
-/* underline */
+/* underline animation */
 .site-nav a::after {
   content: "";
   position: absolute;
@@ -75,23 +85,26 @@
   transition: width var(--transition-base);
 }
 
-.site-nav a:hover::after { width: 100%; }
+.site-nav a:hover::after,
+.site-nav a.active::after {
+  width: 100%;
+}
 
-/* active */
+/* active state */
 .site-nav a.active {
   color: var(--color-accent-strong);
   text-shadow: 0 0 6px var(--overlay-accent);
 }
 
-.site-nav a.active::after { width: 100%; }
-
-/* contact emphasis */
+/* contact highlight */
 .site-nav a[href="#contact"] {
   color: var(--color-accent-strong);
   font-weight: var(--weight-medium);
 }
 
-/* CTA */
+/* =======================
+   CTA BUTTON
+======================= */
 .header-call {
   display: inline-flex;
   align-items: center;
@@ -107,7 +120,6 @@
   white-space: nowrap;
 
   box-shadow: var(--glow-soft);
-
   transition: var(--transition-fast);
 }
 
@@ -116,20 +128,47 @@
   box-shadow: var(--shadow-glow);
 }
 
-/* MENU */
+/* =======================
+   MENU TOGGLE
+======================= */
 .menu-toggle {
   display: none;
   font-size: 1.4rem;
   cursor: pointer;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .menu-toggle { display: block; }
+/* =======================
+   TABLET (optional)
+======================= */
+@media (max-width: 1024px) {
+  .site-nav {
+    gap: var(--space-lg);
+  }
+}
 
+/* =======================
+   MOBILE
+======================= */
+@media (max-width: 768px) {
+  .site-header-inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  /* show burger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* hide CTA on small screens */
+  .header-call {
+    display: none;
+  }
+
+  /* mobile nav dropdown */
   .site-nav {
     position: absolute;
-    top: 70px;
+    top: calc(100% + 10px);
     right: var(--space-md);
 
     flex-direction: column;
@@ -140,6 +179,8 @@
 
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-accent);
+
+    min-width: 200px;
 
     transform: translateY(-10px);
     opacity: 0;
@@ -157,6 +198,4 @@
   .site-nav a {
     padding: var(--space-sm) 0;
   }
-}
-  z-index: var(--z-header);
 }
