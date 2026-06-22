@@ -1,0 +1,11 @@
+/* techstrip.css */
+.tech-strip .container{position:relative;z-index:2}
+.tech-slider{overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent 0%,#fff 15%,#fff 85%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,#fff 15%,#fff 85%,transparent 100%)}
+.tech-track{display:flex;gap:var(--space-xl);width:max-content;animation:scroll var(--marquee-speed) linear infinite}
+.tech-item{display:flex;align-items:center;gap:var(--space-sm);transition:all var(--transition-base),opacity var(--transition-fast);font-size:1.8rem;color:var(--text-primary);opacity:.75}
+.tech-item iconify-icon{font-size:32px;color:var(--color-accent);filter:var(--icon-glow-soft);transition:all var(--transition-base)}
+.tech-item:hover{opacity:1;transform:translateY(-3px) scale(1.08)}
+.tech-item:hover iconify-icon{color:var(--color-accent-strong);transform:scale(1.15);filter:var(--icon-glow-strong)}
+.tech-slider:hover .tech-track{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:600px){.tech-track{gap:var(--space-lg)}.tech-item{font-size:var(--text-base)}.tech-item iconify-icon{font-size:24px}}
