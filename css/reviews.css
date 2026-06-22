@@ -81,19 +81,6 @@ border-color:var(--border-accent);
 box-shadow:var(--glow-soft)
 }
 
-.review-card::after{
-content:"";
-position:absolute;
-inset:0;
-background:var(--gradient-glow-accent);
-opacity:0;
-transition:opacity var(--transition-fast);
-pointer-events:none;
-}
-
-.review-card:hover::after{
-opacity:1
-}
 
 /* ========================
    STARS
