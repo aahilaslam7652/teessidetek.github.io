@@ -5,45 +5,67 @@ document.addEventListener("DOMContentLoaded", () => {
   const scroll = document.querySelector("#recent-repairs .repairs-scroll");
   const lightbox = document.getElementById("lightbox");
 
-  let autoScroll;
-  let currentIndex = 0;
+  if (!scroll) {
+    console.error("❌ Scroll container not found");
+    return;
+  }
 
   /* =========================
-     AUTO SCROLL
+     ✅ CLONE FOR INFINITE LOOP
   ========================= */
 
-  function startAutoScroll() {
-    if (!scroll) return;
+  const cards = Array.from(scroll.children);
 
-    autoScroll = setInterval(() => {
-      const maxScroll = scroll.scrollWidth - scroll.clientWidth;
+  cards.forEach(card => {
+    scroll.appendChild(card.cloneNode(true));
+  });
 
-      if (scroll.scrollLeft >= maxScroll) {
-        scroll.scrollLeft = 0;
-      } else {
-        scroll.scrollLeft += 2;
+  /* =========================
+     ✅ AUTO SCROLL (SMOOTH + LOOP)
+  ========================= */
+
+  let speed = 0.8;       // adjust speed here
+  let isPaused = false;
+
+  function autoScroll() {
+    if (!isPaused) {
+      scroll.scrollLeft += speed;
+
+      const originalWidth = scroll.scrollWidth / 2;
+
+      // ✅ seamless loop (no jump)
+      if (scroll.scrollLeft >= originalWidth) {
+        scroll.scrollLeft -= originalWidth;
       }
-    }, 16);
+    }
+
+    requestAnimationFrame(autoScroll);
   }
 
-  function stopAutoScroll() {
-    clearInterval(autoScroll);
-  }
+  autoScroll();
 
-  if (scroll) {
-    startAutoScroll();
+  /* =========================
+     ✅ PAUSE / RESUME
+  ========================= */
 
-    scroll.addEventListener("mouseenter", stopAutoScroll);
-    scroll.addEventListener("mouseleave", startAutoScroll);
-    scroll.addEventListener("mousedown", stopAutoScroll);
-  }
+  ["mouseenter", "mousedown", "touchstart"].forEach(evt => {
+    scroll.addEventListener(evt, () => {
+      isPaused = true;
+    });
+  });
+
+  ["mouseleave", "mouseup", "touchend"].forEach(evt => {
+    scroll.addEventListener(evt, () => {
+      isPaused = false;
+    });
+  });
 
   /* =========================
      LIGHTBOX SETUP
   ========================= */
 
   if (!lightbox) {
-    console.error("❌ Lightbox missing");
+    console.warn("⚠️ Lightbox not found (skipping)");
     return;
   }
 
@@ -54,31 +76,30 @@ document.addEventListener("DOMContentLoaded", () => {
     lightbox.appendChild(lightboxImg);
   }
 
-  const repairImages = document.querySelectorAll("#recent-repairs .repair-card img");
+  const repairImages = document.querySelectorAll(
+    "#recent-repairs .repair-card img"
+  );
 
-  console.log("✅ Images found:", repairImages.length);
+  let currentIndex = 0;
 
   /* =========================
      OPEN LIGHTBOX
   ========================= */
 
   repairImages.forEach((img, index) => {
-
     img.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      currentIndex = index; // ✅ track index
-
-      stopAutoScroll();
+      currentIndex = index;
+      isPaused = true;
 
       lightbox.style.display = "flex";
       lightboxImg.src = img.src;
     });
-
   });
 
   /* =========================
-     ARROWS (NOW WORKING)
+     ARROWS
   ========================= */
 
   const leftArrow = document.querySelector(".lightbox-arrow.left");
@@ -92,7 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
     leftArrow.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      currentIndex = (currentIndex - 1 + repairImages.length) % repairImages.length;
+      currentIndex =
+        (currentIndex - 1 + repairImages.length) %
+        repairImages.length;
+
       showImage(currentIndex);
     });
   }
@@ -101,7 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
     rightArrow.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      currentIndex = (currentIndex + 1) % repairImages.length;
+      currentIndex =
+        (currentIndex + 1) %
+        repairImages.length;
+
       showImage(currentIndex);
     });
   }
@@ -115,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (closeBtn) {
     closeBtn.onclick = () => {
       lightbox.style.display = "none";
-      startAutoScroll();
+      isPaused = false;
     };
   }
 
@@ -126,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       lightbox.style.display = "none";
-      startAutoScroll();
+      isPaused = false;
     }
   });
 

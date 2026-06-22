@@ -37,8 +37,6 @@
   gap: var(--space-xs);
 
   transform: scale(1.4) translate(0px, 20px);
-
-  /* final effective filter (kept darker one) */
   filter: brightness(0.5) contrast(1.05);
 }
 
@@ -70,7 +68,6 @@
   transform: scale(1.6) translate(-30px, -20px);
 }
 
-
 .xbox-series-s {
   grid-column: 1;
   grid-row: 2;
@@ -80,9 +77,6 @@
 
   transform: scale(1.1) translate(170px, -90px);
 }
-
-
-
 
 /* PS5 (right) */
 .ps5 {
@@ -243,31 +237,71 @@
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE FIX (CLEAN MOBILE LAYOUT)
 ========================================================= */
 
 @media (max-width: 900px) {
   .contact-container {
+    flex-direction: column;
     gap: var(--space-lg);
   }
 
+  /* Replace grid with vertical layout */
   .contact-left {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  /* Order content logically */
+  .contact-text {
+    order: 1;
+    text-align: center;
   }
 
   .contact-top-images {
+    order: 2;
+
     flex-direction: row;
     justify-content: center;
+    gap: var(--space-sm);
+
+    transform: none;
+    filter: none;
   }
 
+  .contact-top-images img {
+    max-width: 45%;
+  }
+
+  /* Reset ALL transforms causing layout breakage */
   .xbox,
+  .xbox-series-s,
   .ps5 {
+    order: 3;
+
+    position: static;
+    transform: none !important;
+
+    align-self: center;
     justify-self: center;
-    transform: scale(1.1);
+
+    max-width: 220px;
+    width: 100%;
   }
 
+  /* General image cleanup */
   .contact-image {
-    max-width: 70%;
+    max-width: 100%;
+    opacity: 0.8;
   }
 }
+
+/* ===== EXTRA SMALL DEVICES (OPTIONAL POLISH) ===== */
+@media (max-width: 600px) {
+  .xbox-series-s {
+    display: none;
+  }
+}
+``
