@@ -45,10 +45,10 @@ cursor:pointer; /* ✅ makes it feel clickable */
 @media(max-width:950px){
 .hero-inner{grid-template-columns:1fr;text-align:center}
 .hero-right{justify-content:center;padding-left:0}
-.hero-pc{transform:none;max-width:500px}
+.hero-pc{transform:none;max-width:500px;margin-left:-110px;margin-top:0px;margin-bottom:-20px}
 .hero-actions{justify-content:center;flex-wrap:wrap}
 .hero-stats{justify-content:center;max-width:100%}
-.hero-reviews{position:static;transform:none;grid-template-columns:repeat(2,1fr);margin-top:20px}
+.hero-reviews{position:static;transform:none;grid-template-columns:repeat(2,1fr);margin-top:-70px;margin-bottom:-90px}
 .hero-reviews-item{width:100%}
 }
 
