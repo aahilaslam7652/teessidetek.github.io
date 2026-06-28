@@ -33,6 +33,10 @@ background:var(--overlay-accent)
 background:var(--overlay-accent-strong)
 }
 
+.area-card {
+  text-align: left;
+}
+
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(10px)}
 to{opacity:1;transform:translateY(0)}

@@ -59,6 +59,7 @@ h1,h2,h3,h4,h5,h6,p{margin:0}
 main{flex:1}
 footer{margin-top:auto}
 
+
 .container{max-width:var(--max);margin:0 auto;padding-inline:var(--space-md)}
 
 
