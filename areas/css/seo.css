@@ -1,0 +1,69 @@
+
+
+/* Heading */
+.area_pages_seo h2 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 20px;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+/* ✅ Keep heading location WHITE (override) */
+.area_pages_seo h2 .locName {
+  color: #ffffff;
+}
+
+/* Paragraphs */
+.area_pages_seo p {
+  font-size: 16.5px;
+  
+  color: rgba(255, 255, 255, 0.82);
+  
+}
+
+/* Last paragraph spacing */
+.area_pages_seo p:last-child {
+  margin-bottom: 0;
+}
+
+/* Keyword emphasis */
+.area_pages_seo strong {
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgba(0,255,180,0.15), transparent);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+/* ✅ Location styling (body only) */
+.area_pages_seo .locName,
+.area_pages_seo .locCluster {
+  color: #00f5c4;
+  font-weight: 500;
+}
+
+/* Slight section separation (premium touch) */
+.area_pages_seo {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .area_pages_seo {
+    padding: 40px 0;
+  }
+
+  .area_pages_seo .section-inner {
+    max-width: 100%;
+  }
+
+  .area_pages_seo h2 {
+    font-size: 24px;
+  }
+
+  .area_pages_seo p {
+    font-size: 15px;
+  }
+}

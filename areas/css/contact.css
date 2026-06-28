@@ -1,0 +1,377 @@
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start; /* ✅ prevents dead space */
+  position: relative;
+}
+
+.contact-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(98, 255, 183, 0.25),
+    transparent
+  );
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.contact-left,
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+
+  
+  height: auto;               /* ✅ stops stretching */
+
+  border: 1px solid rgba(98, 255, 183, 0.15);
+  background: rgba(255,255,255,0.02);
+}
+
+/* =========================================================
+   LEFT PANEL
+========================================================= */
+
+.contact-left {
+  overflow: hidden;
+  position: relative;
+}
+
+/* ✅ LET CONTENT FLOW NATURALLY */
+.contact-text {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* =========================================================
+   CONTACT LINKS
+========================================================= */
+
+.contact-links {
+  display: flex;
+  align-items: center;
+}
+
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+
+  white-space: nowrap;
+  flex: 0 0 auto;
+
+  padding: 3px 6px;
+  border-radius: 6px;
+
+  line-height: 1;
+
+  transition: all 0.25s ease;
+}
+
+/* ✅ hover */
+.contact-links a:hover {
+  color: var(--color-accent);
+  background: rgba(98,255,183,0.08);
+}
+
+/* =========================================================
+   SEO BLOCK
+========================================================= */
+
+.area_pages-location-seo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+
+/* =========================================================
+   IMAGE (IMPORTANT FIX)
+========================================================= */
+
+.contact-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-visual img {
+  max-width: 480px;
+  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.5));
+}
+
+/* =========================================================
+   FORM (RIGHT)
+========================================================= */
+
+
+
+/* ✅ REMOVE HEIGHT FILL BEHAVIOUR */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  flex: unset;  /* ✅ CRITICAL FIX (was causing stretch) */
+}
+
+/* INPUTS */
+.contact-form input,
+.contact-form textarea,
+.custom-select {
+  padding: 11px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+.contact-form textarea {
+  min-height: 90px;
+}
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+
+.toggle-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+}
+
+.toggle-button {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+
+  border-radius: 6px;
+
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #888;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.toggle-button:hover {
+  color: #fff;
+  border-color: #555;
+}
+
+.toggle-button.active {
+  background: linear-gradient(135deg, #62ffb7, #0ed4c0);
+  color: #041210;
+  border: none;
+  box-shadow: 0 4px 15px rgba(98,255,183,0.25);
+}
+
+/* =========================================================
+   FORM FOOTER (KEY FIX)
+========================================================= */
+
+.form-footer {
+  margin-top: 12px;  /* ✅ remove auto → FIXES DEAD SPACE */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+
+  border-radius: 10px;
+  border: none;
+
+  display: flex;              /* ✅ fixes text alignment */
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #62ffb7, #0ed4c0);
+  color: #041210;
+
+  font-weight: 600;
+  font-size: 15px;
+
+  box-shadow:
+    0 8px 25px rgba(98,255,183,0.25);
+
+  transition: 0.25s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.custom-select {
+  width: 100%;
+  border: 1px solid #333;
+  background-color: #111;
+  color: #fff;
+
+  appearance: none;
+}
+
+/* ================================
+   CONTACT MOBILE
+================================ */
+@media (max-width: 768px) {
+
+  .contact-container {
+    grid-template-columns: 1fr; /* ✅ stack */
+    gap: 16px;
+  }
+
+  .contact-container::after {
+    display: none; /* ✅ remove divider line */
+  }
+
+  /* ================================
+     CARDS
+  ================================= */
+
+  .contact-left,
+  .contact-form {
+    padding: 14px;
+  }
+
+  /* ================================
+     LEFT CONTENT
+  ================================= */
+
+  .contact-text {
+    gap: 10px;
+  }
+
+  .contact-list li {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  /* links stack better */
+  .contact-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .contact-links a {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  /* ================================
+     IMAGE FIX (KEY)
+  ================================= */
+
+  .contact-visual {
+    margin-top: 10px;
+  }
+
+  .contact-visual img {
+    width: 85%;
+    max-width: 260px;  /* ✅ prevents huge overlap */
+    height: auto;
+  }
+
+  /* ================================
+     FORM
+  ================================= */
+
+  .form-fields {
+    gap: 10px;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .custom-select {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  /* toggle becomes easier to tap */
+  .toggle-button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  /* ================================
+     CTA
+  ================================= */
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ================================
+   EXTRA SMALL DEVICES
+================================ */
+@media (max-width: 420px) {
+
+  .contact-visual img {
+    width: 90%;
+    max-width: 220px;
+  }
+
+  .contact-list li {
+    font-size: 0.85rem;
+  }
+
+  .contact-links a {
+    width: 100%;        /* ✅ full-width buttons */
+    justify-content: center;
+  }
+
+}

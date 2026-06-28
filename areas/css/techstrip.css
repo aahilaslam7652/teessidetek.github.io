@@ -1,0 +1,101 @@
+/* =========================================================
+   TECH SLIDER
+========================================================= */
+
+/* Wrapper (keeps everything contained) */
+.area_pages-tech-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  margin: 14px 0;
+  padding: 6px 0;
+
+  /* ✅ fade edges for premium look */
+  mask-image: linear-gradient(to right, transparent 0%, #fff 15%, #fff 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #fff 15%, #fff 85%, transparent 100%);
+}
+
+/* Track (the moving row) */
+.area_pages-tech-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+
+  align-items: center;
+
+  gap: 16px;
+
+  width: max-content;
+
+  animation: scroll 28s linear infinite;
+}
+
+/* Individual item */
+.area_pages-tech-item {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 25px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  color: var(--text-primary);
+  opacity: 0.7;
+
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* Icon styling */
+.area_pages-tech-item iconify-icon {
+  font-size: 25px;
+  color: var(--color-accent);
+
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* Hover interaction (subtle, not overdone) */
+.area_pages-tech-item:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.area_pages-tech-item:hover iconify-icon {
+  color: var(--color-accent-strong);
+}
+
+/* Pause on hover */
+.area_pages-tech-slider:hover .area_pages-tech-track {
+  animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .area_pages-tech-track {
+    gap: 12px;
+  }
+
+  .area_pages-tech-item {
+    font-size: 12px;
+  }
+
+  .area_pages-tech-item iconify-icon {
+    font-size: 16px;
+  }
+}

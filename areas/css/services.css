@@ -1,0 +1,16 @@
+.areas_pages-services-section {position:relative;z-index:var(--z-base);}
+.areas_pages-services-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);width:100%;}
+.areas_pages-services-grid>* {min-width:0;}
+.areas_pages-services-card {
+  margin-top:var(--space-sm);
+  padding:var(--space-lg);
+  border-radius:var(--radius-lg);
+  border:1px solid var(--border-subtle);
+  background:var(--surface);
+  display:flex;
+  flex-direction:column;
+}
+
+.areas_pages-services-cta {
+  text-align: center;
+}

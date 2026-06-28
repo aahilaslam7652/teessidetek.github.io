@@ -1,0 +1,68 @@
+.areas_pages-assurance-grid {gap:var(--space-sm);}
+.areas_pages-assurance-card {padding:var(--space-md);border-radius:var(--radius-lg);border:1px solid var(--border-subtle);background:var(--overlay-subtle);transition:var(--transition-fast);}
+.areas_pages-assurance-card:hover {transform:var(--lift-sm);border-color:var(--border-accent);box-shadow:var(--glow-soft);}
+/* ✅ CTA (UPDATED — uses global button system) */
+.area_pages_assurance_cta {
+  text-align: center;
+  margin-top: var(--space-2xs);
+}
+/* ================================
+   ASSURANCE GRID - MOBILE
+================================ */
+@media (max-width: 768px) {
+
+  .areas_pages-assurance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 per row */
+    gap: 10px;
+    margin-top: var(--space-sm);
+  }
+
+  .areas_pages-assurance-card {
+    padding: 12px;
+    border-radius: 14px;
+    text-align: center;
+
+    /* subtle premium effect */
+    backdrop-filter: blur(6px);
+  }
+
+  /* disable hover on touch devices */
+  .areas_pages-assurance-card:hover {
+    transform: none85rem;    transform: none;
+    line-height: 1.4;
+  }
+
+  /* CTA spacing */
+  .area_pages_assurance_cta {
+    margin-top: 10px;
+    padding: 0 10px;
+    text-align: center;
+  }
+}
+
+
+/* ================================
+   EXTRA SMALL PHONES
+================================ */
+@media (max-width: 420px) {
+
+  .areas_pages-assurance-grid {
+    grid-template-columns: 1fr; /* ✅ 1 per row */
+  }
+
+  .areas_pages-assurance-card {
+    padding: 14px;
+  }
+
+  .areas_pages-assurance-card p {
+    font-size: 0.9rem;
+  }
+
+}
+    box-shadow: none;
+    border-color: var(--border-subtle);
+  }
+
+  /* tighter text */
+  .areas_pages-assurance-card p {

@@ -1,0 +1,296 @@
+/* ✅ Section text */
+.area_pages_section_sub {
+  opacity: .85;
+  margin-top: var(--space-xs);
+}
+
+.area_pages_micro_proof {
+  font-size: var(--text-sm);
+  opacity: .7;
+  margin-top: var(--space-sm);
+}
+
+/* ✅ Trust strip */
+.area_pages_trust_full {
+  width: 100%;
+  margin: var(--space-xl) 0 var(--space-2xl);
+  border-top: 1px solid var(--overlay-accent);
+  border-bottom: 1px solid var(--overlay-accent);
+  padding: var(--space-lg) 0;
+}
+
+.area_pages_trust_strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.area_pages_trust_strip a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: var(--overlay-subtle);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  text-align: center;
+  transition: var(--transition-base);
+}
+
+.area_pages_trust_strip strong {
+  font-size: var(--text-lg);
+  color: var(--color-accent-strong);
+  filter: var(--icon-glow-strong);
+}
+
+.area_pages_trust_strip span {
+  opacity: .85;
+}
+
+.area_pages_trust_strip a:hover {
+  transform: var(--lift-sm);
+  border-color: var(--border-accent);
+  box-shadow: var(--glow-soft);
+}
+
+/* ✅ Reviews grid */
+.area_pages_review_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+/* ✅ Review cards */
+.area_pages_review_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  background: linear-gradient(
+    145deg,
+    var(--overlay-accent),
+    var(--overlay-subtle)
+  );
+  backdrop-filter: var(--glass-blur);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.area_pages_review_card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--elevation-2), var(--glow-soft);
+  border-color: var(--border-accent);
+}
+
+/* ✅ Border glow effect */
+.area_pages_review_card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    var(--color-accent-strong),
+    transparent
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: var(--transition-base);
+}
+
+.area_pages_review_card:hover::before {
+  opacity: 1;
+}
+
+/* ✅ Soft overlay glow */
+.area_pages_review_card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top left,
+    var(--overlay-accent-strong),
+    transparent 65%
+  );
+  opacity: .4;
+  pointer-events: none;
+}
+
+/* ✅ Stars */
+.area_pages_review_stars {
+  font-size: var(--text-lg);
+  color: var(--color-accent-strong);
+  margin-bottom: var(--space-md);
+  letter-spacing: 2px;
+  filter: var(--icon-glow-strong);
+}
+
+/* ✅ Review text */
+.area_pages_review_card p {
+  position: relative;
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-sm);
+  opacity: .95;
+}
+
+.area_pages_review_card p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--border-accent);
+}
+
+/* ✅ Meta text */
+.area_pages_review_meta {
+  font-size: var(--text-sm);
+  opacity: .7;
+}
+
+/* ✅ CTA (UPDATED — uses global button system) */
+.area_pages_reviews_cta {
+  text-align: center;
+  margin-top: var(--space-2xs);
+}
+
+/* ✅ REMOVE old custom button styles */
+/* ❌ NO .area_pages_reviews_cta a styling anymore */
+
+/* ✅ Optional slight spacing tweak */
+.area_pages_reviews_cta .btn {
+  padding: var(--space-sm) var(--space-lg);
+}
+
+/* ✅ Slight stagger effect */
+.area_pages_review_card:nth-child(2) {
+  transform: translateY(6px);
+}
+
+.area_pages_review_card:nth-child(2):hover {
+  transform: translateY(-6px) scale(1.015);
+}
+/* ================================
+   TRUST STRIP - MOBILE
+================================ */
+@media (max-width: 768px) {
+
+  .area_pages_trust_full {
+    margin: var(--space-md) 0;
+    padding: var(--space-md) 0;
+  }
+
+  .area_pages_trust_strip {
+    grid-template-columns: repeat(2, 1fr); /* ✅ 2 per row */
+    gap: 10px;
+  }
+
+  .area_pages_trust_strip a {
+    flex-direction: column; /* stack number + label */
+    gap: 4px;
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  .area_pages_trust_strip strong {
+    font-size: 1rem;
+  }
+
+  .area_pages_trust_strip span {
+    font-size: 0.75rem;
+  }
+
+  /* disable hover effects on touch */
+  .area_pages_trust_strip a:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--border-subtle);
+  }
+}
+
+
+/* ================================
+   REVIEWS GRID - MOBILE
+================================ */
+@media (max-width: 768px) {
+
+  .area_pages_review_grid {
+    grid-template-columns: 1fr; /* ✅ single column */
+    gap: var(--space-md);
+  }
+
+  .area_pages_review_card {
+    padding: 14px;
+  }
+
+  .area_pages_review_card:hover {
+    transform: none; /* disable jump */
+    box-shadow: var(--elevation-1);
+  }
+
+  .area_pages_review_card::before {
+    display: none; /* remove heavy glow effect */
+  }
+
+  .area_pages_review_card::after {
+    opacity: 0.2; /* soften overlay */
+  }
+
+  .area_pages_review_card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .area_pages_review_meta {
+    font-size: 0.8rem;
+  }
+
+  .area_pages_review_stars {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  /* remove stagger offset (breaks layout on mobile) */
+  .area_pages_review_card:nth-child(2) {
+    transform: none;
+  }
+}
+
+
+/* ================================
+   EXTRA SMALL DEVICES
+================================ */
+@media (max-width: 420px) {
+
+  .area_pages_trust_strip {
+    grid-template-columns: 1fr; /* ✅ 1 per row */
+  }
+
+  .area_pages_review_card {
+    padding: 12px;
+  }
+
+  .area_pages_review_card p {
+    font-size: 0.88rem;
+  }
+
+}
+
